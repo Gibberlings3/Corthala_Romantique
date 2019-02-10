@@ -6,7 +6,7 @@ For Baldur's Gate II -- SoA and ToB (BGII, BGT, BGII:EE, EET)
 
 by Domi, Beyshaliban, Caetlyn, Meira, jastey
 
-Version 1
+Version 2
 
 
 1.  About
@@ -110,6 +110,8 @@ The mod uses BCaesar's RestCheck to ensure rest dialogues do not fire at the sam
 
 Content-wise:
 
+IEP Valygar Friendship mod: The mods were made compatible in the following way: If both mods are installed, the CR romance will kill the IEP Friendship talks, but the IEP talks will kill the CR Friendship talks (in case of no romance). Note: some NPC banter and interjections of the CR mod will still play even if the CR friendship talks are disabled.
+
 NPC-Strongholds: The quest to close the sphere might trigger while the sphere quests are still running. Just tell Valygar that it has to wait.
 
 Extended Sphere Quest / Mage Stronghold Mod: The quest to close the sphere might trigger while the sphere quests are still running. Just tell Valygar that it has to wait.
@@ -137,7 +139,7 @@ Beyshaliban
 Additional Writers
 Beyshaliban, Caetlyn, Meira
 
-Edits and recoding of v1
+Edits and recoding of v1 
 jastey
 
 
@@ -163,6 +165,16 @@ A special thank you goes to
 
 8. Version History
 
+Version 2 (10th of February 2019):
+-compatibility with IEP Valygar Friendship if both mods are installed: CR Romance kills IEP Friendship, but IEP Friendship kills CR friendship talks in case of no romance.
+-fixed bug where Valygar's "Tree of life" dialogue would fire randomly elsewhere
+-(ToB) Forest talk about not being on Amketharan's dusty streets any more will only fire after party was in Amkethran
+-Valygar will no longer mention the name "Veldrin" before Adalon says it
+-typo corrections
+-renamed setup-corthalaromantique.tp2 -> corthalaromantique.tp2
+-added corthalaromantique.ini with mod info
+-update to WeiDU v246
+
 Version 1:
 -Valygar will react to PID in Underdark (no more "has nothing to say to you")
 
@@ -187,9 +199,12 @@ Beta 1:  released 22nd of February 2004
 
 9.  Links
 
-Corthala Romantique forum: http://gibberlings3.net/forums/index.php
+Corthala Romantique forum: https://www.gibberlings3.net/forums/topic/29306-corthala-romantique-valygar-romance/
 
-Spellhold Studios Froum
+Gibberlings Three Forum
+http://gibberlings3.net/forums/index.php
+
+Spellhold Studios Forum
 http://www.shsforums.net/
 
 WeiDU
@@ -198,12 +213,6 @@ http://weidu.org
 
 Near Infinity
 https://github.com/Argent77/NearInfinity/releases/tag/v2.1-20180205
-
-ConTEXT
-http://www.context.cx
-
-ConTEXT Highlighters
-http://weidu.org 
 
 Infinity Explorer
 http://infexp.sourceforge.net
@@ -235,7 +244,7 @@ This mod is also not developed, supported, or endorsed by BioWare, Black Isle St
 
 =================================================================================
 REDISTRIBUTION NOTE: Corthala Romantique Mod was created to be freely enjoyed by all 
-Baldur's Gate II players.
+Baldur's Gate II players. Please do not mirror the mod without permission of G3 administration. Technical, compatibility, and bugfixing updates welcome if contributed to the official download with approval of G3 administration.
 ================================================================================= 
 
 

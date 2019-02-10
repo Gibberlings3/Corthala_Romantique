@@ -452,9 +452,7 @@ Global("H#ValygarRomanceActive","GLOBAL",2)
 GlobalGT("P#VaLoveTalk","GLOBAL",2)
 RealGlobalTimerExpired("P#VaForestTalkTime","GLOBAL")
 ReputationGT(Player1,9)
-OR(2)
-	Global("P#VaForestTalk","GLOBAL",0)
-	Global("P#VaForestTalk","GLOBAL",2)
+Global("P#VaForestTalk","GLOBAL",0)
 OR(2)
 	AreaType(FOREST)
 	AreaCheck("AR6100")
@@ -464,6 +462,39 @@ RESPONSE #100
 IncrementGlobal("P#VaForestTalk","GLOBAL",1)
 END
 
+/* second talk refers to Amkethran's dusty roads so check whether the party was there */
+IF
+AreaCheck("AR3000")
+Global("P#VaForestTalk_InAmkethran","LOCALS",0)
+THEN
+RESPONSE #100
+SetGlobal("P#VaForestTalk_InAmkethran","LOCALS",1)
+END
+
+/* activate second forest talk */
+IF
+Global("H#ValygarRomanceActive","GLOBAL",2)
+    InParty(Myself)
+    See(Player1)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    CombatCounter(0)
+    !See([ENEMY])
+GlobalGT("P#VaLoveTalk","GLOBAL",2)
+RealGlobalTimerExpired("P#VaForestTalkTime","GLOBAL")
+ReputationGT(Player1,9)
+Global("P#VaForestTalk","GLOBAL",2)
+Global("P#VaForestTalk_InAmkethran","LOCALS",1) //party was in Amkethran
+OR(2)
+	AreaType(FOREST)
+	AreaCheck("AR6100")
+!AreaType(CITY)
+THEN
+RESPONSE #100
+IncrementGlobal("P#VaForestTalk","GLOBAL",1)
+END
+
+/* initiate forest talks */
 IF 
 InParty(Myself)
     See(Player1)

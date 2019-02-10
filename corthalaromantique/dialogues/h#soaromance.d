@@ -333,8 +333,8 @@ END //APPEND VALYGARJ
 
 //Biowares's banters shamelessly stolen for romancing purposes
 //~I am curious.  How much experience have you had with magic?~
-
-ADD_STATE_TRIGGER BVALYGA 91 ~False()~
+/* deactivate this dlg state for romance - banter will be started by mod added state, but enable it for Valygar Friendship mod */
+ADD_STATE_TRIGGER BVALYGA 91 ~%CR_FRIENDSHIP_DISABLED%~
 
 
 APPEND VALYGARJ
@@ -348,7 +348,8 @@ END //APPEND VALYGARJ
 
 
 //BioWare banter: ~Tell me... what kind of family did you have?~
-ADD_STATE_TRIGGER BVALYGA 122 ~False()~
+/* deactivate this dlg state for romance - banter will be started by mod added state, but enable it for Valygar Friendship mod */
+ADD_STATE_TRIGGER BVALYGA 122 ~%CR_FRIENDSHIP_DISABLED%~
 
 APPEND VALYGARJ
 
@@ -1361,7 +1362,8 @@ END //APPEND VALYGARJ
 
 //BioWare banter: ~May I ask you for your opinion on something?~
 
-ADD_STATE_TRIGGER BVALYGA 139 ~False()~
+/* deactivate this dlg state for romance - banter will be started by mod added state, but enable it for Valygar Friendship mod */
+ADD_STATE_TRIGGER BVALYGA 139 ~%CR_FRIENDSHIP_DISABLED%~
 
 
 APPEND VALYGARJ

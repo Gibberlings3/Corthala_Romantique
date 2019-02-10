@@ -539,7 +539,7 @@ END
 
 
 //Interjection to Silver Dragon; UDSILVER; state 53
-INTERJECT_COPY_TRANS UDSILVER 53 H#Valaghar
+INTERJECT_COPY_TRANS UDSILVER 37 H#Valaghar
   == VALYGARJ IF ~InParty("Valygar") InMyArea("Valygar") !StateCheck("Valygar",CD_STATE_NOTVALID)~ THEN
      @80
   == UDSILVER IF ~InParty("Valygar") InMyArea("Valygar") !StateCheck("Valygar",CD_STATE_NOTVALID)~ THEN
@@ -564,7 +564,8 @@ END
 //Weight goes in, so that she can see Valygar
 APPEND UHRANG01
 IF WEIGHT #-100
-~InParty("Valygar") InMyArea("Valygar") !StateCheck("Valygar",CD_STATE_NOTVALID)
+~!%CR_FRIENDSHIP_DISABLED%
+InParty("Valygar") InMyArea("Valygar") !StateCheck("Valygar",CD_STATE_NOTVALID)
 Global("H#TalkedToMerella","GLOBAL",0)~ THEN BEGIN IsThatYou
 SAY @85
 IF ~~ THEN EXTERN VALYGARJ ItsAlright
@@ -636,7 +637,7 @@ END
 
 /* prevent original interjection to run if romance ones do */
 
-ADD_STATE_TRIGGER PLAYER1 36 ~!Global("H#ValygarRomanceActive","GLOBAL",2)~
+ADD_TRANS_TRIGGER PLAYER1 36 ~!Global("H#ValygarRomanceActive","GLOBAL",2)~
 
 
 EXTEND_BOTTOM PLAYER1 36

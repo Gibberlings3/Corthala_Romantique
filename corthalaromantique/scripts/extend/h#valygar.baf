@@ -170,7 +170,7 @@ END
 
 
 
-//ROMANCE START 
+//ROMANCE & Friednship track START 
 /* activation */
 IF
     InParty(Myself)
@@ -181,6 +181,10 @@ IF
     !See([ENEMY])
     Global("H#LoveTalk","LOCALS",0)
     AreaCheck("AR1100")
+    OR(3)
+	!%CR_FRIENDSHIP_DISABLED% //Friendship dialogues will not start if IEP Valygar Friendship mod is installed
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
 THEN
     RESPONSE #100
         SetGlobal("H#LoveTalk","LOCALS",2)
@@ -220,6 +224,10 @@ IF
     Dead("UHRANG01")
     !See("UHRANG01")
     Global("H#MerellaDead","GLOBAL",0)
+    OR(3)
+	!%CR_FRIENDSHIP_DISABLED% //Friendship dialogues will not start if IEP Valygar Friendship mod is installed
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
 THEN
     RESPONSE #100
         SetGlobal("H#MerellaDead","GLOBAL",1)
@@ -257,13 +265,17 @@ IF
     OR(2)
 	RealGlobalTimerExpired("H#ValygarRomance","GLOBAL")
 	AreaCheck("AR1404")
+    OR(3)
+	!%CR_FRIENDSHIP_DISABLED% //Friendship dialogues will not start if IEP Valygar Friendship mod is installed
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
 THEN
     RESPONSE #100
         SetGlobal("H#LoveTalk","LOCALS",4)
 END
 
 
-/* tired Bhaalspawn - your soul is gone */
+/* tired Bhaalspawn - your soul is gone (Romance only) */
 
 IF
     OR(2)
@@ -332,6 +344,10 @@ IF
        AreaCheck("AR1000") // Governement
        AreaCheck("AR2000") //Trademeet
     Global("H#CityTalk","GLOBAL",0)
+    OR(3)
+	!%CR_FRIENDSHIP_DISABLED% //Friendship dialogues will not start if IEP Valygar Friendship mod is installed
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
 THEN
     RESPONSE #100
         SetGlobal("H#CityTalk","GLOBAL",1)
@@ -379,6 +395,10 @@ IF
        AreaCheck("AR1000") // Governement
        AreaCheck("AR2000") //Trademeet
     Global("H#TempleTalk","GLOBAL",0)
+    OR(3)
+	!%CR_FRIENDSHIP_DISABLED% //Friendship dialogues will not start if IEP Valygar Friendship mod is installed
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
 THEN
     RESPONSE #100
         SetGlobal("H#TempleTalk","GLOBAL",1)
@@ -416,6 +436,10 @@ IF
     Global("RangerProtector","GLOBAL",1)
     AreaCheck("AR1100")
     Global("H#RangerProtector","GLOBAL",0)
+    OR(3)
+	!%CR_FRIENDSHIP_DISABLED% //Friendship dialogues will not start if IEP Valygar Friendship mod is installed
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
 THEN
     RESPONSE #100
         SetGlobal("H#RangerProtector","GLOBAL",1)
@@ -450,6 +474,10 @@ IF
     Global("H#LoveTalk","LOCALS",9)
     RealGlobalTimerExpired("H#ValygarRomance","GLOBAL")
     Global("H#KnowsBhaalspawn","GLOBAL",0)
+    OR(3)
+	!%CR_FRIENDSHIP_DISABLED% //Friendship dialogues will not start if IEP Valygar Friendship mod is installed
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
 THEN
     RESPONSE #100
         SetGlobal("H#KnowsBhaalspawn","GLOBAL",2)
@@ -486,6 +514,10 @@ IF
     Global("H#LoveTalk","LOCALS",9)
     RealGlobalTimerExpired("H#ValygarRomance","GLOBAL")
     GlobalLT("H#KnowsParents","GLOBAL",2)
+    OR(3)
+	!%CR_FRIENDSHIP_DISABLED% //Friendship dialogues will not start if IEP Valygar Friendship mod is installed
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
 THEN
     RESPONSE #100
         IncrementGlobal("H#KnowsParents","GLOBAL",2)
@@ -535,6 +567,10 @@ IF
     !AreaCheck("AR1300")
     !AreaType(DUNGEON)
     Global("H#Player1MageTalk","GLOBAL",0)
+    OR(3)
+	!%CR_FRIENDSHIP_DISABLED% //Friendship dialogues will not start if IEP Valygar Friendship mod is installed
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
 THEN
     RESPONSE #100
         SetGlobal("H#Player1MageTalk","GLOBAL",1)
@@ -557,7 +593,7 @@ THEN
 END
 
 
-/* reaction to turning into the slayer - only lovetalk */
+/* reaction to turning into the slayer - (Romance only) */
 
 /* activation */
 
@@ -614,12 +650,16 @@ IF
     !StateCheck(Player1,CD_STATE_NOTVALID)
     CombatCounter(0)
     !See([ENEMY])
+    OR(3)
+	!%CR_FRIENDSHIP_DISABLED% //Friendship dialogues will not start if IEP Valygar Friendship mod is installed
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
 THEN
     RESPONSE #100
         SetGlobal("H#UnderdarkHumor","GLOBAL",1)
 END
 
-/* in case the player plays too quickly. Valygar's confession will play if demon ceremony is ready */
+/* in case the player plays too quickly. Valygar's confession will play if demon ceremony is ready (Romance only) */
 IF
     OR(2)
 	Global("PhaereJob","GLOBAL",11)
@@ -680,6 +720,10 @@ IF
     !StateCheck(Player1,CD_STATE_NOTVALID)
     CombatCounter(0)
     !See([ENEMY])
+    OR(3)
+	!%CR_FRIENDSHIP_DISABLED% //Friendship dialogues will not start if IEP Valygar Friendship mod is installed
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
 THEN
     RESPONSE #100
         SetGlobal("H#NoLongerDrow","LOCALS",1)
@@ -721,7 +765,7 @@ THEN
 END
 
 
-/* Apology, romance committment, necklace - romance only */
+/* Apology, romance committment, necklace - (Romance only) */
 /* activation */
 
 IF
@@ -776,6 +820,10 @@ IF
         Global("H#LoveTalk","LOCALS",5)
         Global("H#LoveTalk","LOCALS",7)
         Global("H#LoveTalk","LOCALS",9)
+    OR(3)
+	!%CR_FRIENDSHIP_DISABLED% //Friendship dialogues will not start if IEP Valygar Friendship mod is installed
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
 THEN
     RESPONSE #100
         IncrementGlobal("H#LoveTalk","LOCALS",1)
@@ -798,6 +846,10 @@ IF
     RealGlobalTimerExpired("H#ValygarRomance","GLOBAL")
     Global("H#LoveTalk","LOCALS",11)
     ReputationGT(Player1,13)
+    OR(3)
+	!%CR_FRIENDSHIP_DISABLED% //Friendship dialogues will not start if IEP Valygar Friendship mod is installed
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
 THEN
     RESPONSE #100
         IncrementGlobal("H#LoveTalk","LOCALS",1)
@@ -819,6 +871,10 @@ IF
     CombatCounter(0)
     !See([ENEMY])
     RealGlobalTimerExpired("H#ValygarRomance","GLOBAL")
+    OR(3)
+	!%CR_FRIENDSHIP_DISABLED% //Friendship dialogues will not start if IEP Valygar Friendship mod is installed
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
 THEN
     RESPONSE #100
         SetGlobal("H#LoveTalk","LOCALS",16)
@@ -840,6 +896,10 @@ IF
     !See([ENEMY])
     !AreaType(DUNGEON)
     RealGlobalTimerExpired("H#ValygarRomance","GLOBAL")
+    OR(3)
+	!%CR_FRIENDSHIP_DISABLED% //Friendship dialogues will not start if IEP Valygar Friendship mod is installed
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
     OR(4)
         Global("H#LoveTalk","LOCALS",13)
 // // //       Global("H#LoveTalk","LOCALS",15) (above)
@@ -1000,7 +1060,7 @@ END
 
 
 
-/* banter after wake-zp with Korgan */
+/* banter after wake-up with Korgan */
 
 /* Global("H#Korgan3","LOCALS",1) set via valygard.baf */
 

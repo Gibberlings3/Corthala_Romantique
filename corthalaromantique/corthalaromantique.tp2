@@ -2,11 +2,17 @@ BACKUP ~CorthalaRomantique\Backup~
 
 //AUTHOR ~~
 SUPPORT ~http://gibberlings3.net/corthala/~
-VERSION ~1~ //180918
+VERSION ~v2~ //190210
 
 AUTO_TRA ~CorthalaRomantique/%s~
 
 ALWAYS
+
+/* compatibility with Valygar Friendship mod: variable is set by IEP Friendship mod 
+(will be used as !%CR_FRIENDSHIP_DISABLED% for enabling the CR Friendship talks) */
+
+    OUTER_SPRINT ~CR_FRIENDSHIP_DISABLED~ 
+		 ~Global("I#NPCIEPValygarDetected","GLOBAL",1)~
 
 
     OUTER_SET ValygarRomanceTimer_long = 4000
@@ -208,8 +214,8 @@ END
 
 
 
-COMPILE ~CorthalaRomantique/dialogues/H#SOARomance.d~
-COMPILE ~CorthalaRomantique/dialogues/H#SOAInterject.d~
+COMPILE EVALUATE_BUFFER ~CorthalaRomantique/dialogues/H#SOARomance.d~
+COMPILE EVALUATE_BUFFER ~CorthalaRomantique/dialogues/H#SOAInterject.d~
 COMPILE ~CorthalaRomantique/dialogues/H#SOABanter.d~
 COMPILE ~CorthalaRomantique/dialogues/H#RomanceConflict.d~
 
@@ -219,8 +225,7 @@ COMPILE ~CorthalaRomantique/dialogues/H#SOA_PID.d~ //
 
 // ~Corthala Romantique ToB - ALPHA 2~
 
-ACTION_IF GAME_IS ~tob bg2ee eet~ BEGIN  //includes BGT
-
+ACTION_IF GAME_IS ~tob bgt bg2ee eet~ BEGIN  
 
 
 
