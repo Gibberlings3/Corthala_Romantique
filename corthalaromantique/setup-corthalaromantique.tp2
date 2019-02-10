@@ -1,0 +1,560 @@
+BACKUP ~CorthalaRomantique\Backup~
+
+//AUTHOR ~~
+SUPPORT ~http://gibberlings3.net/corthala/~
+VERSION ~1~ //180918
+
+AUTO_TRA ~CorthalaRomantique/%s~
+
+ALWAYS
+
+
+    OUTER_SET ValygarRomanceTimer_long = 4000
+    OUTER_SET ValygarRomanceTimer = 3000
+    OUTER_SET ValygarRomanceTimer_short = 1200
+
+    OUTER_SET ValygarToBTimer_short = 1500
+    OUTER_SET ValygarToBTimer_long = 2800
+
+  ACTION_IF GAME_IS ~eet~ BEGIN
+    OUTER_SET bg2_chapter = 12
+  END ELSE BEGIN
+    OUTER_SET bg2_chapter = 0
+  END
+  OUTER_FOR (i=1; i<=10; i=i+1) BEGIN
+    OUTER_SET bg2_chapter = bg2_chapter + 1
+    OUTER_SPRINT name_source ~bg2_chapter_%i%~
+    OUTER_SET EVAL ~%name_source%~ = bg2_chapter
+  END
+
+// The following introduces the ToB scripting functions to a SoA game (Thanks for Idobek and CamDawg for showing the right way to do this.)
+  ACTION_IF GAME_IS ~bg2~ THEN BEGIN
+    APPEND ~ACTION.IDS~ ~31 SpellRES(S:RES*,O:Target*)~
+            UNLESS ~31 SpellRES(S:RES\*,O:Target\*)~
+    APPEND ~ACTION.IDS~ ~95 SpellPointRES(S:RES*,P:Target*)~
+            UNLESS ~95 SpellPointRES(S:RES\*,P:Target\*)~
+    APPEND ~ACTION.IDS~ ~113 ForceSpellRES(S:RES*,O:Target)~
+            UNLESS ~113 ForceSpellRES(S:RES\*,O:Target)~
+    APPEND ~ACTION.IDS~ ~114 ForceSpellPointRES(S:RES*,P:Target)~
+            UNLESS ~114 ForceSpellPointRES(S:RES\*,P:Target)~
+    APPEND ~ACTION.IDS~ ~147 RemoveSpellRES(S:Spell*)~
+            UNLESS ~147 RemoveSpellRES(S:Spell\*)~
+    APPEND ~ACTION.IDS~ ~160 ApplySpellRES(S:RES*,O:Target)~
+            UNLESS ~160 ApplySpellRES(S:RES\*,O:Target)~
+    APPEND ~ACTION.IDS~ ~181 ReallyForceSpellRES(S:RES*,O:Target)~
+            UNLESS ~181 ReallyForceSpellRES(S:RES\*,O:Target)~
+    APPEND ~ACTION.IDS~ ~191 SpellNoDecRES(S:RES*,O:Target*)~
+            UNLESS ~191 SpellNoDecRES(S:RES\*,O:Target\*)~
+    APPEND ~ACTION.IDS~ ~192 SpellPointNoDecRES(S:RES*,P:Target*)~
+            UNLESS ~192 SpellPointNoDecRES(S:RES\*,P:Target\*)~
+    APPEND ~ACTION.IDS~ ~240 ReallyForceSpellDeadRES(S:RES*,O:Target)~
+            UNLESS ~240 ReallyForceSpellDeadRES(S:RES\*,O:Target)~
+    APPEND ~ACTION.IDS~ ~318 ForceSpellRangeRES(S:RES*,O:Target)~
+            UNLESS ~318 ForceSpellRangeRES(S:RES\*,O:Target)~
+    APPEND ~ACTION.IDS~ ~319 ForceSpellPointRangeRES(S:RES*,P:Target)~
+            UNLESS ~319 ForceSpellPointRangeRES(S:RES\*,P:Target)~
+    APPEND ~ACTION.IDS~ ~337 ReallyForceSpellPointRES(S:RES*,P:Target*)~
+            UNLESS ~337 ReallyForceSpellPointRES(S:RES\*,P:Target\*)~
+    APPEND ~TRIGGER.IDS~ ~0x00A1 SpellCastOnMeRES(S:Spell*,O:Caster*)~
+             UNLESS ~0x00A1 SpellCastOnMeRES(S:Spell\*,O:Caster\*)~
+    APPEND ~TRIGGER.IDS~ ~0x0091 SpellCastRES(S:Spell*,O:Object*)~
+             UNLESS ~0x0091 SpellCastRES(S:Spell\*,O:Object\*)~
+    APPEND ~TRIGGER.IDS~ ~0x00A6 SpellCastPriestRES(S:Spell*,O:Object*)~
+             UNLESS ~0x00A6 SpellCastPriestRES(S:Spell\*,O:Object\*)~
+    APPEND ~TRIGGER.IDS~ ~0x00A7 SpellCastInnateRES(S:Spell*,O:Object*)~
+             UNLESS ~0x00A7 SpellCastInnateRES(S:Spell\*,O:Object\*)~
+    APPEND ~TRIGGER.IDS~ ~0x4031 HaveSpellRES(S:Spell*)~
+             UNLESS ~0x4031 HaveSpellRES(S:Spell\*)~
+    APPEND ~TRIGGER.IDS~ ~0x40D5 ActuallyInCombat()~
+             UNLESS ~0x40D5 ActuallyInCombat()~
+
+// Making sure that the player has correct (ToB) version of Shout() action in the action.ids
+
+    COPY_EXISTING ~action.ids~ ~override~
+      REPLACE_TEXTUALLY ~^106 Shout(.*$~ ~106 Shout(I:ID*SHOUTIDS)~
+    BUT_ONLY_IF_IT_CHANGES
+
+  END
+
+  ACTION_IF GAME_IS ~bgt bg2 tob~ THEN BEGIN
+    INCLUDE ~CorthalaRomantique/lib/h#times.tph~
+  END
+
+  APPEND ~STATE.IDS~
+    ~0x80101FEF CD_STATE_NOTVALID~
+  UNLESS ~CD_STATE_NOTVALID~ 
+
+  ACTION_DEFINE_ARRAY fl#reload BEGIN CRGame.TRA CRGame_ee.TRA END
+
+     LAF HANDLE_CHARSETS
+      INT_VAR
+       infer_charset = 1
+      STR_VAR
+       tra_path = EVAL ~CorthalaRomantique~
+       noconvert_array = fl#noconvert
+       reload_array = fl#reload
+       iconv_path = ~CorthalaRomantique/tools/iconv~
+  END
+
+   //TRAs declared in LANGUAGE must be reloaded
+  LOAD_TRA ~CorthalaRomantique/%LANGUAGE%/CRGame.TRA~
+  LOAD_TRA ~CorthalaRomantique/%LANGUAGE%/CRGame_ee.TRA~
+
+END //ALWAYS
+
+
+
+
+
+
+LANGUAGE ~English~
+         ~English~
+         ~CorthalaRomantique/english/CRSetup.tra~
+         ~CorthalaRomantique/english/CRGame.tra~
+
+BEGIN @10000 DESIGNATED 0
+
+/* RestCheck by BCeasar. Prevents triggering of Valygar's nighttalks directly after one of the original game's */
+
+EXTEND_BOTTOM ~baldur.bcs~ ~CorthalaRomantique/restcheck/_rc_baldur.baf~
+EXTEND_BOTTOM ~baldur25.bcs~ ~CorthalaRomantique/restcheck/_rc_baldur25.baf~
+EXTEND_BOTTOM ~aerie.bcs~ ~CorthalaRomantique/restcheck/_rc_aerie.baf~
+EXTEND_BOTTOM ~aeri25.bcs~ ~CorthalaRomantique/restcheck/_rc_aeri25.baf~
+EXTEND_BOTTOM ~anomen.bcs~ ~CorthalaRomantique/restcheck/_rc_anomen.baf~
+EXTEND_BOTTOM ~jaheira.bcs~ ~CorthalaRomantique/restcheck/_rc_jaheira.baf~
+EXTEND_BOTTOM ~viconia.bcs~ ~CorthalaRomantique/restcheck/_rc_viconia.baf~
+EXTEND_BOTTOM ~vico25.bcs~ ~CorthalaRomantique/restcheck/_rc_vico25.baf~
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+  EXTEND_BOTTOM ~dorn.bcs~ ~CorthalaRomantique/restcheck/_rc_dorn.baf~
+  EXTEND_BOTTOM ~hexxat.bcs~ ~CorthalaRomantique/restcheck/_rc_hexxat.baf~
+  EXTEND_BOTTOM ~hexxa25.bcs~ ~CorthalaRomantique/restcheck/_rc_hexxa25.baf~
+  EXTEND_BOTTOM ~neera25.bcs~ ~CorthalaRomantique/restcheck/_rc_neera25.baf~
+  EXTEND_BOTTOM ~rasaad.bcs~ ~CorthalaRomantique/restcheck/_rc_rasaad.baf~
+END
+
+/* ADD_JOURNAL */
+/* The Final Battle with Bodhi. */
+ADD_JOURNAL EXISTING TITLE (#74337) @3 @9 USING ~CorthalaRomantique/%LANGUAGE%/valygar_bodhiabduction.tra~
+
+/* A Guardian for the Sphere */
+ADD_JOURNAL EXISTING TITLE (@289) @49 @113 @142 @143 @183 @222 @241 USING ~CorthalaRomantique/%LANGUAGE%/quest.tra~
+
+
+// ITEMS
+COPY ~CorthalaRomantique\items\H#NECKL.itm~ ~override\H#NECKL.itm~
+  SAY NAME2 @1
+  SAY UNIDENTIFIED_DESC @2
+  SAY DESC @3
+
+COPY ~CorthalaRomantique\items\H#VALBDY.itm~ ~override\H#VALBDY.itm~
+  SAY UNIDENTIFIED_DESC @11
+  SAY DESC @11
+
+// SCRIPTS
+COMPILE ~CorthalaRomantique\scripts\copy~
+
+//Extended
+
+EXTEND_BOTTOM ~ANOMEN.bcs~ ~CorthalaRomantique\scripts\extend\h#anomenconflict.baf~
+
+/* Bodhi abduction and resurrection */
+EXTEND_TOP ~AR0809.bcs~ ~CorthalaRomantique\scripts\extend\h#ar0809.baf~
+EXTEND_BOTTOM ~bodhiamb.bcs~ ~CorthalaRomantique\scripts\extend\h#bodhiamb.baf~
+EXTEND_BOTTOM ~cleanse.bcs~ ~CorthalaRomantique\scripts\extend\h#cleanse.baf~
+EXTEND_BOTTOM ~vampamb.bcs~ ~CorthalaRomantique\scripts\extend\h#vampamb.baf~
+EXTEND_BOTTOM ~VLUVINFO.bcs~ ~CorthalaRomantique\scripts\extend\h#vluvinfo.baf~
+
+ACTION_IF
+  FILE_EXISTS ~naliad.bcs~
+  THEN BEGIN
+EXTEND_BOTTOM ~naliad.bcs~ ~CorthalaRomantique\scripts\extend\naliad.baf~ EVALUATE_BUFFER
+END
+  ELSE BEGIN
+COMPILE ~CorthalaRomantique\scripts\extend\naliad.baf~ EVALUATE_BUFFER 
+END
+
+ACTION_IF
+  FILE_EXISTS ~override\valygard.bcs~
+  THEN BEGIN
+EXTEND_TOP ~valygard.bcs~ ~CorthalaRomantique\scripts\extend\valygard.baf~ EVALUATE_BUFFER
+END
+  ELSE BEGIN
+COMPILE ~CorthalaRomantique\scripts\extend\valygard.baf~ EVALUATE_BUFFER
+END
+COPY_EXISTING ~valygard.bcs~ ~override/valygard.bcs~
+//REPLACE_TEXTUALLY 999999 ~%H#Valmusic%~
+
+EXTEND_TOP ~valygar.bcs~ ~CorthalaRomantique\scripts\extend\h#valygar.baf~ EVALUATE_BUFFER
+//  REPLACE_TEXTUALLY 999999 ~%H#Valmusic%~
+
+
+// CREATURE files
+
+COPY ~CorthalaRomantique\creatures\H#VMPVAL.cre~ ~override\H#VMPVAL.cre~
+
+//DIALOGUES
+
+//Associate Voiceclip to initial Talk
+//There's probably a better way to associate the sound where it belongs
+// not needed for EE
+//#17890
+ACTION_IF GAME_IS ~bg2 tob~ THEN BEGIN
+<<<<<<<< ...inlined/valygar_sound.d
+REPLACE_SAY VALYGAR 0 @0
+>>>>>>>>
+COMPILE ~...inlined/valygar_sound.d~
+END
+
+
+
+COMPILE ~CorthalaRomantique/dialogues/H#SOARomance.d~
+COMPILE ~CorthalaRomantique/dialogues/H#SOAInterject.d~
+COMPILE ~CorthalaRomantique/dialogues/H#SOABanter.d~
+COMPILE ~CorthalaRomantique/dialogues/H#RomanceConflict.d~
+
+COMPILE ~CorthalaRomantique/dialogues/valygar_bodhiabduction.d~
+
+COMPILE ~CorthalaRomantique/dialogues/H#SOA_PID.d~ //
+
+// ~Corthala Romantique ToB - ALPHA 2~
+
+ACTION_IF GAME_IS ~tob bg2ee eet~ BEGIN  //includes BGT
+
+
+
+
+
+//Compiling Dialogues
+
+COMPILE ~CorthalaRomantique\dialogues\P#VLTTOB.d~
+COMPILE ~CorthalaRomantique\dialogues\P#VAMW.d~
+COMPILE ~CorthalaRomantique\dialogues\P#VATHRO.d~
+COMPILE ~CorthalaRomantique/dialogues/ToB_banters.d~
+
+//Scripts
+
+EXTEND_BOTTOM ~valy25.bcs~ ~CorthalaRomantique\scripts\TOB\p#varolt.baf~ EVALUATE_BUFFER
+EXTEND_BOTTOM ~valygard.bcs~ ~CorthalaRomantique\scripts\TOB\p#varod.baf~ EVALUATE_BUFFER
+
+/* Cespenar looks for a present */
+EXTEND_TOP ~cespen.bcs~ ~CorthalaRomantique\scripts\TOB\P#cespen.baf~
+
+COMPILE ~CorthalaRomantique\scripts\TOB\p#VAMW.baf~
+
+EXTEND_BOTTOM ~cut218g.bcs~ ~CorthalaRomantique\scripts\TOB\P#VAMW1.baf~
+
+COPY_EXISTING ~ar6200.bcs~ ~override~
+DECOMPILE_BCS_TO_BAF
+REPLACE_TEXTUALLY
+~Global("ValygarBio","GLOBAL",0)~
+~!Global("H#ValygarRomanceActive","GLOBAL",1)
+!Global("H#ValygarRomanceActive","GLOBAL",2)
+Global("ValygarBio","GLOBAL",0)~
+COMPILE_BAF_TO_BCS
+
+EXTEND_TOP ~ar6200.bcs~ ~CorthalaRomantique\scripts\TOB\P#VATHRO.BAF~
+
+//Creatures
+
+COPY ~CorthalaRomantique\creatures\H#MAGDEL.cre~ ~override\H#magdel.cre~
+  SAY NAME1 @10 /* ~Magdelene~ */
+  SAY NAME2 @11  /* ~Magdelene Corthala~ */
+WRITE_ASCII 0x248 ~P#MAGDEL~ //override script
+WRITE_ASCII 0x280 ~P#MAGDEL~ //death variable
+WRITE_ASCII 0x2CC ~P#MAGDEL~ //dialogue
+//WRITE_ASCII 0x34 ~SAFANAS~ //small portrait
+
+
+COPY ~CorthalaRomantique\creatures\H#ANDREA.cre~ ~override\H#ANDREA.cre~
+  SAY NAME1 @16 /* ~Andreas~ */
+  SAY NAME2 @17 /* ~Andreas Corthala~ */
+WRITE_ASCII 0x248 ~P#ANDREA~ //override script
+WRITE_ASCII 0x280 ~P#ANDREA~ //death variable
+WRITE_ASCII 0x2CC ~P#ANDREA~ //dialogue
+WRITE_ASCII 0x34 ~P#ANDREA~ //small portrait
+
+//Items
+
+COPY ~CorthalaRomantique\items\TOB\V#belt.itm~ ~override~
+  SAY NAME1 @18 /* ~Girdle of the Champion~ */
+  SAY NAME2 @18
+  SAY DESC @19 /* ~A renown Sembian bard, Andarel traveled North to collect the folklore of the barbarian tribes. His first encounter with the Black Raven Tribe proved to be far from peaceful. He was captured and was saved from death by intervention of the chief's daughter, Yadwiga, who wished to marry him, despite his shortcomings as a warrior. Yadwiga was promised to Roudhar, the Charging Boar, and the chief declared that his daughter would wed the one who should win a challenge. While Andarel was preparing to his imminent death, Yadwiga brought him this girdle and assured him that the magic within it will make him the winner. The faith in the item helped Andarel to last through the challenge, but he was clearly the weaker of the two contenders. However the chief declared that Yadwiga is to marry the bard, for Roudhar is strong enough, while Andarel is weak and needs a good woman to support him. Recently, Cespanar, The Imp recovered the Girdle on the order of <CHARNAME> of Candlekeep to find a gift for her companion, Valygar Corthala of Amn.
+  STATISTICS:
+
+Special:  Lowers AC by 2
+          Can be worn with other magical items~ */
+
+
+COPY ~CorthalaRomantique\items\TOB\V#bow.cre~ ~override~
+COPY ~CorthalaRomantique\items\TOB\V#bow.eff~ ~override~
+COPY ~CorthalaRomantique\items\TOB\V#bow.itm~ ~override~
+  SAY NAME1 @20 /* ~Longbow~ */
+  SAY NAME2 @21 /* ~Longbow: The Wind Singer~ */
+  SAY DESC @22 /* ~Longbow+3: The Wind Singer
+  The shaft of this longbow is made from a bone of an unknown beast. It is dark-colored, shiny and unadorned, yet it emanates a powerful enchantment. The nature of the incantation is obscure, but it is connected to the element of Air. The only time when the bow appeared in the recent ages is when Cespanar the Imp has recovered the bow on the order of <CHARNAME> of Candlekeep to find a gift for her companion, Valygar Corthala of Amn.   
+
+STATISTICS:
+
+THACO: +4
+Dexterity: +2, while equipped
+Special: Summons a Greater Air Elemental once per day
+Weight: 2
+Speed Factor: 5
+Proficiency Type: Bow Weapons
+Type:  2-handed
+Requires: 6 Strength
+Not Usable By:
+ Druid
+ Cleric
+ Mage
+ Thief~ */
+ 
+COPY ~CorthalaRomantique\items\TOB\V#dragon.cre~ ~override~
+COPY ~CorthalaRomantique\items\TOB\V#claw.itm~ ~override~
+COPY ~CorthalaRomantique\items\TOB\V#katana.itm~ ~override~
+  SAY NAME1 @23 /* ~Katana~ */
+  SAY NAME2 @24 /* ~Katana +4, The Dragon Wing~ */
+  SAY DESC @25 
+ 
+COPY ~CorthalaRomantique\items\TOB\V#ring.itm~ ~override~
+  SAY NAME1 #6348
+  SAY NAME2 @26 /* ~The Ring of Mirroring: Cowled Wizards' Bane~ */
+  SAY DESC @27 
+
+COPY ~CorthalaRomantique\items\TOB\h#glove.itm~ ~override~
+  SAY NAME1 @28 /* ~Valygar's Hunting Gloves~ */
+  SAY NAME2 @28 /* ~Valygar's Hunting Gloves~ */
+  SAY DESC @29 
+
+   
+//Epilogues
+
+COPY ~CorthalaRomantique\Epilogue\PVALYZZ.2da~ ~override\PVALY01.2da~
+  REPLACE ~99999~ @30 /*~The War of the Five left Amn and neighboring countries suspicious of all that was connected to the spawn of Bhaal. The role that <CHARNAME> of Candlekeep played in the events prior to her Ascension was not yet fully understood. One of her surviving companions, Valygar Corthala who already was famed as a man with dark past, dismal present and uncertain future received a lukewarm welcome in Athkatla, even if the direct prosecutions against him by the Cowled Wizards ceased. The only house that opened its doors to Valygar was that of Marquise DeVallenzzi. Athkatlan society soon was teaming with rumors about the unlikely relationship. They aimed to please the bored aristocrats, it seemed, engaged in a complicated and turbulent affair. The rumors had it that Corthala escaped to the Cloudpeek Mountains and Leonora searched for him with her dragon-mount; that Valygar the Necromancer put a silence spell on Leonora so that she could not say a word for a ten-day... To the surprise of onlookers, the affair ended after several years-in marriage. Valygar Corthala and Leonora DeVallenzzi had a wedding that was almost as spectacular as their affair had been and settled in the City of Coin for good.
+
+The scandalous fame attracted many a young heart to the man who once was called a criminal. In time, Valygar Corthala found himself a subject of much admiration among Athkatlan nobility. After much hesitation he accepted a position of Chief Inspector and whenever name Corthala is spoken in Amn nowadays, it is spoken with respect and love - much aided by the deeds of Valygar's pride and joy - his only son. For it came to pass that he, a sorcerer by blood, reformed Cowled Wizards bringing the much needed changes to the once mysterious and fearsome organization.~ */
+
+COPY ~CorthalaRomantique\Epilogue\PVALYZZ.2da~ ~override\PVALY02.2da~
+  REPLACE ~99999~ @31 /* ~The controversial tale of the new Lady of Murder's ascension spread throughout the Realms like wild fire, marking the end of the Five's war. Stories told of <CHARNAME>'s former companions grew to legends in the passing of time. 
+
+Amongst these one stood out as the darkest, that of the 'Black Ranger', Vaylgar Corthala. Being famed as a lover of the Lady of Murder and opposed by the Cowled Wizards, Valygar was unable to retain permission to live in his native Athkatla. Due to the organization's influence, he was later forced to flee from Amn. He found shelter for a time in a newly created Cult of <CHARNAME> before making his way farther north, to the land which many a rogue and outcast call their home - the Icewind Dale. There the last Corthala spent the remainder of his days in solitude, serving as a caravan guard. He died without an issue.~ */
+
+COPY ~CorthalaRomantique\Epilogue\PVALYZZ.2da~ ~override\PVALY03.2da~
+  REPLACE ~99999~ @32 /* ~Really, <CHARNAME> it should be you writing this... For you know the best what happened to your loyal friend Valygar after you have rejected your place in pantheon as a Lady of Murder. But I shall take up the task.
+
+Valygar traveled with <CHARNAME> and one day their road led to a village in Zakhara. To Valygar's surprise he found out that he had large family there, not a single member of which was a magic user. Magdelene's son and <CHARNAME> received a warm welcome. Before they knew it the whole village turned into a big carnival ground celebrating their marriage. Not to disappoint the gathering Valygar and <CHARNAME> exchanged their vows in front of all the gods that might be listening.
+
+Their marriage proved an eventful one; in Zakhara, when they want to praise someone for accomplishing great deeds in the short amount of time, they say that the person had Corthala's honeymoon. The saying originates from the fact that Valygar Corthala and his new wife, <CHARNAME>, are rumored to have saved the world at least thrice before their first anniversary. 
+
+They lived happily together for many years and died on the same day.~ */
+
+COPY ~CorthalaRomantique\Epilogue\PVALYZZ.2da~ ~override\PVALY04.2da~
+  REPLACE ~99999~ @33 /* ~Really, <CHARNAME> it should be you writing this... For you know the best what happened to your loyal friend Valygar after you have rejected your place in pantheon as a Lady of Murder. But I shall take up the task.
+
+Valygar traveled with <CHARNAME> and one day their road led to a village in Zakhara. To Valygar's surprise he found out that he had large family there, not a single member of which was a magic user. Magdelene's son and <CHARNAME> received a warm welcome. Before they knew it the whole village turned into a big carnival ground celebrating their marriage. Not to disappoint the gathering, Valygar and <CHARNAME> exchanged their vows in front of all the gods that might be listening.
+
+They crossed many a country after leaving Zakhara, and sailed across the wide waters to see the mysterious Maztica, but after a while the longing for their homeland brought them back to the Sword Coast. Valygar and <CHARNAME> Corthala settled in Athkatla. In time, Valygar Corthala found himself a subject of much admiration among Athkatlan nobility.
+
+After much hesitation, he accepted the position of Chief inspector, and whenever the name Corthala is spoken in Amn nowadays, it is spoken with respect and love. The house's reputation has been greatly aided by the deeds of Valygar's pride and joy, his only son. For it came to pass that he, a sorcerer by blood, reformed Cowled Wizards bringing the much needed changes to the once mysterious and fearsome organization.~ */
+
+COPY ~CorthalaRomantique\Epilogue\PVALYZZ.2da~ ~override\PVALY05.2da~
+  REPLACE ~99999~  @34 /* ~The western winds from the Sea of Storms blew in the new spring to Athkatla and with it came a ship that brought Valygar Corthala back from the Land of Fate. He had wandered in the Land of Fate for two long years and returned leaner, his eyes sitting deeper in their sockets. A certain thoughtfulness was now etched into him, but also he appeared calmer and surer. From what little he said of his time in Zakhara <CHARNAME> gathered that Valygar had met with Magdelene's relatives on his travels, and had been welcomed by them as a son.
+
+One thing did not change however - the love Valygar harbored in his heart for <CHARNAME>. Neither time, nor distance broke the bond that the two shared. 
+
+That year, in the time of harvests and plenty, following the age-long tradition, Valygar Corthala took <CHARNAME> of Candlekeep for his wife. The festivities were held in the Druid Grove and Trademeet. The fireworks, which were supplied by Jansen and Jansen flew into the night sky over the fountain on the main square lighting up the slightly chipped statues of the heroes of Trademeet. The delighted kids giggled at the large red hearts an unknown prankster painted at the two of them, which bore an astonishing resemblance to the bride and groom.
+
+Blessed by the Great Druid Cernd himself, the union was rich in happiness and love. Valygar and <CHARNAME> Corthala settled in Athkatla. In time, Valygar Corthala found himself a subject of much admiration among Athkatlan nobility.
+
+After much hesitation, he accepted the position of Chief inspector, and whenever the name Corthala is spoken in Amn nowadays, it is spoken with respect and love. The house's reputation has been greatly aided by the deeds of Valygar's pride and joy, his only son. For it came to pass that he, a sorcerer by blood, reformed Cowled Wizards bringing the much needed changes to the once mysterious and fearsome organization.~ */
+
+COPY ~CorthalaRomantique\Epilogue\PVALYZZ.2da~ ~override\PVALY06.2da~
+  REPLACE ~99999~ @35 /* ~The western winds from the Sea of Storms blew in the new spring to Athkatla and with it came a ship that brought Valygar Corthala back from the Land of Fate. He had wandered in the Land of Fate for two long years and returned leaner, his eyes sitting deeper in their sockets. A certain thoughtfulness was now etched into him, but also he appeared calmer and surer. From what little he said of his time in Zakhara <CHARNAME> gathered that Valygar had met with Magdelene's relatives on his travels, and had been welcomed by them as a son.
+
+One thing did not change however - the love Valygar harbored in his heart for <CHARNAME>. Neither time, nor distance broke the bond that the two shared. 
+
+Before the spring was out, Valygar Corthala took <CHARNAME> of Candlekeep for his wife. The festivities were held in the Druid Grove and Trademeet. The fireworks, which were supplied by Jansen and Jansen flew into the night sky over the fountain on the main square lighting up the slightly chipped statues of the heroes of Trademeet. The delighted kids giggled at the large red hearts an unknown prankster painted at the two of them, which bore an astonishing resemblance to the bride and groom, but the newlyweds themselves had already left the town in search of new adventures. 
+
+Their marriage proved an eventful one; in Amn, when they want to praise someone for accomplishing great deeds in the short amount of time, they say that the person had Corthala's honeymoon. The saying originates from the fact that Valygar Corthala and his new wife, <CHARNAME>, are rumored to have saved the world at least thrice before their first anniversary.~ */
+
+COPY ~CorthalaRomantique\Epilogue\PVALYZZ.2da~ ~override\PVALY07.2da~
+  REPLACE ~99999~ @36 /* ~Valygar and <CHARNAME> continued adventuring for several years after the end of the War of the Five. They were seen together as far North as Luskan and one legend placed them in Thay. The passion which engulfed Valygar's heart while <CHARNAME> was walking the razor's edge subsided in the later years and turned into the heartfelt friendship. 
+
+One day, the two met Leonora DeVellenzzi, who traveled with them for a time. When she indicated that it was time for her to return to Athkatla, Valygar asked for a leave from <CHARNAME> to follow the Marquise. 
+
+Leonora and Valygar traveled back to Athkatla, where he planned to assume a contemplative life on his family estate, but admirers among the nobility would not let him rest. He was pressured into assuming the title of Chief Inspector, a responsibility he did not want, but corruption within the city soon gained his ire. Surprising even himself, Valygar became an effective leader, and it was this term in office that truly restored the Corthala family name. 
+
+Valygar eventually married Leonora DeVallenzzi. The famous heroine, <CHARNAME> of Candlekeep, was the woman who danced the most at the wedding and drank heartily to the happiness of the newlyweds.
+
+Corthala's only son, the pride of Valygar's life, took the lessons of the father to heart. He would go on to lead the Cowled Wizards, becoming the organization's greatest agent of reform.~ */
+
+COPY ~CorthalaRomantique\Epilogue\PVALYZZ.2da~ ~override\PVALY08.2da~
+  REPLACE ~99999~ @37 /* ~Valygar and <CHARNAME> continued adventuring for several years after the end of the War of the Five. They were seen together as far North as Luskan and one legend placed them in Thay. The passion which engulfed Valygar's heart while <CHARNAME> was walking the razor's edge subsided in the later years and turned into the heartfelt friendship. 
+
+Years past, and Valygar grew tired of the adventurous lifestyle his younger lover preferred to all else. He bid a fond farewell to <CHARNAME> intending to retire and assume a contemplative life on his family estate. However, due to continuing opposition by the Cowled Wizards, Valygar was unable to retain permission to live in his native Athkatla.
+
+Valygar went to live in Umar Hills and eventually married a local farmer's daughter. The famous heroine, <CHARNAME> of Candlekeep, was the woman who danced the most at the wedding and drank heartily to the happiness of the newlyweds.
+
+Corthala's only son, the pride of Valygar's life, took the lessons of the father to heart. He would go on to lead the Cowled Wizards, becoming the organization's greatest agent of reform.~ */
+
+COPY ~CorthalaRomantique\Epilogue\PVALYZZ.2da~ ~override\PVALY09.2da~
+  REPLACE ~99999~ @38 /* ~Many elven elders shook their heads in disapproval at <CHARNAME> when they saw her heart given so completely to Valygar Corthala of Amn. In truth, to an idle observer, little will appear sadder than a bond between a human and an elf at the times when the human's days are running out. 
+
+If it made any difference to Valygar and <CHARNAME> they gave no sign of it. Inseparable and loyal to each other, the two traveled far and wide. They were seen together as far North as Luskan and one legend placed them in Thay. Some say that the two adventurers crossed the seas and ventured as far as Zakhara and Matzica. 
+
+When the evening of Valygar's life began, and his temples silvered, the couple disappeared for a time. None, save <CHARNAME> knows where and when the last of Corthalas died and is buried. 
+
+When <CHARNAME> reappeared, she was alone. Restless, she wandered thus for many years.  Eventually she met an Elven Lord, her equal in power, glory and years, who ended her years of loneliness. Together they left Faerun for Evermeet. 
+
+But it is <CHARNAME>'s spring love and her human lover, Valygar Corthala, that lives on in the songs of the bards.~ */
+
+COPY ~CorthalaRomantique\Epilogue\PVALYZZ.2da~ ~override\PVALY10.2da~
+  REPLACE ~99999~ @39 /* ~Valygar and <CHARNAME> continued adventuring for several years after the end of the War of the Five. They were seen together as far North as Luskan. One legend placed them in Thay. But eventually, the difference in their life cycles caught up to the two lovers. The passion which engulfed Valygar's heart while <CHARNAME> and he were walking on the razor's edge subsided and turned into the heartfelt friendship. 
+
+Years past, and Valygar grew tired of the adventurous lifestyle his ever-young lover preferred to all else. He bid a fond farewell to <CHARNAME> and went to live in Umar Hills. There after a time, he married a local farmer's daughter. 
+
+The famous heroine, <CHARNAME> of Candlekeep, was the woman who danced the most at the wedding and drank heartily to the happiness of the newlyweds. With her came an Elven Lord who was her equal in power, glory and years. Not long after that the two Elves left Faerun for the Evermeet. 
+
+Corthala's only son, Valygar's pride and joy, made it his life's goal to right the wrongs done to his father. He would go on to lead the Cowled Wizards, becoming the organization's greatest agent of reform.~ */
+
+COPY ~CorthalaRomantique\Epilogue\PVALYZZ.2da~ ~override\PVALY11.2da~
+  REPLACE ~99999~ @40 /* ~After the battle against Mellisan <CHARNAME> and Valygar returned to Umar Hills to enjoy a short period of freedom and love. <CHARNAME> became restless after a while and declared that she would like to travel free and relatively unmolested for a change. Valygar gladly agreed, and they set off to explore the Realms. 
+
+In their fourth year together they had a daughter who turned out to blend the virtues of her parents perfectly. Valygar relaxed only when it became obvious that the girl had no interest whatsoever in magic. In fact Goriona fell asleep in seconds when they paid aunt Imoen a visit and she started to talk about her research. 
+
+The family decided it was time to settle down when it became obvious that <CHARNAME> was going to have another child. They returned to Umar Hills where <CHARNAME> gave birth to a second girl. They named her Magdelene to honor the memory of Valygar's mother. 
+
+The couple's love and life was severely tested when Valygar became tormented by old fears when little Magdelene not only turned out to be the spitting image of her grandmother, but to have inherited her love for and affinity to magic. He adored his daughters and <CHARNAME>, but feared for Magdelene and watched her constantly, often staying awake through the nights with worry. 
+
+<CHARNAME> watched the change in her beloved with agony, feeling that there was nothing she could say or do to chase away the shadows. She begged, pleaded, argued, reasoned and finally threatened him to no avail. His only answer was that they had tempted fate when they had another child after Goriona had turned out being 'uncursed'. 
+
+<CHARNAME> summoned all of her strength, clandestinely packed her things and left him without leaving a note or saying another word. 
+
+She returned to Candlekeep and became a famous ranger-protector and a sought tutor to many would-be rangers. When Magdelene turned ten <CHARNAME> asked the monks of Candlekeep to take her under their wing and give her proper education. Magdelene was talented and inspired and became a fine mage; she was ambitious, but never showed a sign of the fatal obsession her father had feared so much. <CHARNAME> was tempted ever so often to search for Valygar, to tell him that all his fears had been unnecessary, but she never brought herself to it. 
+
+Goriona stayed with her mother to become a ranger herself, eventually. At the age of eighteen she decided to look for her father. Two days after her twentieth birthday, she found out that Valygar Corthala had lived in a small cabin halfway between Candlekeep and Beregost. He had never disclosed his location to the family he watched over so carefully and had died some years ago outnumbered in a bandit raid.
+
+Shaken to the core and not thinking about the possible consequences Goriona told her mother about this. <CHARNAME>'s hard-won inner peace was shattered. She knew the cabin. She had tried to meet its owner, but he was always gone whenever she stopped by. Those she asked only shrugged, for no one really knew who the stranger was. The thought that she had not guessed, not felt her lover's presence drove <CHARNAME> back to wandering. She was never seen again.~ */
+
+COPY ~CorthalaRomantique\Epilogue\PVALYZZ.2da~ ~override\PVALY12.2da~
+  REPLACE ~99999~ @41 /*~After the battle against Mellisan <CHARNAME> and Valygar returned to Umar Hills to enjoy a short period of freedom and love. <CHARNAME> became restless after a while and declared that she would like to travel free and relatively unmolested for a change. Valygar gladly agreed, and they set off to explore the Realms. 
+
+In their fourth year together they had a daughter who turned out to blend the virtues of her parents perfectly. Valygar relaxed only when it became obvious that the girl had no interest whatsoever in magic. In fact Goriona fell asleep in seconds when they paid aunt Imoen a visit and she started to talk about her research. 
+
+The family decided it was time to settle down when it became obvious that <CHARNAME> was going to have another child. They returned to Umar Hills where <CHARNAME> gave birth to a second girl. They named her Magdelene to honor the memory of Valygar's mother. 
+
+The couple's love and life was severely tested when Valygar became tormented by old fears when little Magdelene not only turned out to be the spitting image of her grandmother, but to have inherited her love for and affinity to magic. He adored his daughters and <CHARNAME>, but feared for Magdelene and watched her constantly, often staying awake through the nights with worry. 
+
+<CHARNAME> watched the change in her beloved with agony, feeling that there was nothing she could say or do to chase away the shadows. She begged, pleaded, argued, reasoned and finally threatened him to no avail. His only answer was that they had tempted fate when they had another child after Goriona had turned out being 'uncursed'. 
+
+<CHARNAME> summoned all of her strength, clandestinely packed her things and left him without leaving a note or saying another word.
+
+<CHARNAME> took Magdelene to Candlekeep, believing the place which had helped her would help Magdelene as well. She turned down several offers to become ranger-protector there as her thoughts still lingered in Umar Hills. She still hoped that some day she would find a way to banish Valygar's demons.
+
+Valygar spent his time sulking and simmering, cursing himself, life and especially <CHARNAME>. Stubborn and convinced he was right, he suppressed his need for her and for his family, until one day he received a short, letter written by his daughters promising they would never take up magic. Valygar's remaining defenses melted instantly and he was on the road only moments later
+
+As it happened, <CHARNAME> had just thrown all her plots aside and decided to travel to Umar Hills. She and Valygar met on the road, halfway between Beregost and Candlekeep. It took only one moment for the two to forgive one another, although they still had a lot of talking to do.
+
+
+Re-established as loving couple they shared the responsibilities of ranger-protection on the Sword Coast to be near their daughter Magdelene, who chose to study in Candlekeep library.  Magdelene was talented and inspired and became a fine mage; she was ambitious, but never showed a sign of the fatal obsession her father had feared so much.
+
+Eventually Valygar, <CHARNAME> and their daughters packed their belongings to visit the homeland of Magdelene Corthala I. The sisters returned to Amn three years later, but their parents stayed there for the rest of their lives.~ */
+
+END //ToB
+
+
+/* crossmod */
+
+/* Weimer's Solaufein */
+ACTION_IF FILE_EXISTS_IN_GAME ~sola.dlg~ THEN BEGIN
+  PRINT @10003 /* ~Weimer's Solaufein detected... installing crossmod.~ */
+  EXTEND_BOTTOM ~valygar.bcs~ ~CorthalaRomantique\crossmod\h#solaufein2cent.baf~
+  COMPILE EVALUATE_BUFFER ~CorthalaRomantique/crossmod/solaufein_conflict.d~ 
+END
+
+/* Kelsey */
+ACTION_IF FILE_EXISTS_IN_GAME ~BJ#KLSY.dlg~ THEN BEGIN
+  PRINT @10004 /* ~Kelsey detected... installing crossmod.~ */
+  EXTEND_BOTTOM ~valygar.bcs~ ~CorthalaRomantique\crossmod\h#kelsey2cent.baf~
+  COMPILE EVALUATE_BUFFER ~CorthalaRomantique/crossmod/kelsey_conflict.d~ 
+END
+
+/* Jastey's Solaufein */
+ACTION_IF FILE_EXISTS_IN_GAME ~C#SolauB.dlg~ THEN BEGIN
+  PRINT @10005 /* ~Jastey's Solaufein detected... installing crossmod.~ */
+  COMPILE EVALUATE_BUFFER ~CorthalaRomantique/crossmod/solaufein_conflict.d~ 
+END
+
+/* UB - Suna Seni component */
+ACTION_IF FILE_EXISTS_IN_GAME ~u!cut41g.bcs~ THEN BEGIN
+  PRINT @10006 /* ~UB's Suna Seni component detected... installing crossmod.~ */
+
+  OUTER_SET valygar_state_1 = STATE_WHICH_SAYS 170 IN ~ub/tra/%s/ubdialog.tra~ FROM ~VALYGARJ.dlg~
+
+  OUTER_SET valygar_state_2 = STATE_WHICH_SAYS 172 IN ~ub/tra/%s/ubdialog.tra~ FROM ~VALYGARJ.dlg~
+
+  OUTER_SET valygar_state_3 = STATE_WHICH_SAYS 188 IN ~ub/tra/%s/ubdialog.tra~ FROM ~VALYGARJ.dlg~
+  COMPILE EVALUATE_BUFFER ~CorthalaRomantique/crossmod/ub_SunaSeni_followup.d~ 
+  EXTEND_BOTTOM ~valygar.bcs~ ~CorthalaRomantique/crossmod/ub_SunaSeni_followup.baf~ EVALUATE_BUFFER
+
+END
+  
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////
+// Bathing scene (restbanter)
+//
+/////////////////////////////////////////////////////
+
+//BEGIN ~Bathing scene~
+BEGIN @10001 DESIGNATED 1
+REQUIRE_COMPONENT ~Setup-CorthalaRomantique.tp2~ ~0~ @10007
+
+COMPILE  ~CorthalaRomantique/bathingflirt/bathing_restflirt.d~
+EXTEND_TOP ~valygard.bcs~ ~CorthalaRomantique/bathingflirt/bathing_restflirt.baf~
+
+
+
+
+
+/////////////////////////////////////////////////////
+//
+// Leonora - A Guard for the Sphere
+/////////////////////////////////////////////////////
+
+
+//BEGIN ~Install Leonora Content: A Guard for the Sphere~
+BEGIN @10002 DESIGNATED 2
+
+COPY ~CorthalaRomantique/quest/H#TOLGER.cre~ ~override\H#TOLGER.cre~
+  SAY NAME1 @15
+  SAY NAME2 @15
+
+COPY ~CorthalaRomantique/quest/H#LEON.cre~ ~override\H#LEON.cre~
+  SAY NAME1 @13
+  SAY NAME2 @14
+
+COPY_EXISTING ~cutspy.cre~ ~override/H#LEONCS.cre~
+WRITE_ASCII 0x280 ~H#LEONCS~ #32
+
+COPY ~CorthalaRomantique\creatures\H#GADAM.cre~ ~override\H#GADAM.cre~
+COPY ~CorthalaRomantique\quest\H#GBRAIN.cre~ ~override\H#GBRAIN.cre~
+COPY ~CorthalaRomantique\quest\H#GCLAY.cre~ ~override\H#GCLAY.cre~
+COPY ~CorthalaRomantique\quest\H#GFLES.cre~ ~override\H#GFLES.cre~
+COPY ~CorthalaRomantique\quest\H#GIRON.cre~ ~override\H#GIRON.cre~
+COPY ~CorthalaRomantique\quest\H#GSTONE.cre~ ~override\H#GSTONE.cre~
+  
+
+EXTEND_BOTTOM ~valygar.bcs~ ~CorthalaRomantique/quest/scripts/quest.baf~ EVALUATE_BUFFER
+
+COMPILE EVALUATE_BUFFER ~CorthalaRomantique/quest/scripts/compile~ 
+
+COMPILE EVALUATE_BUFFER ~CorthalaRomantique/quest/quest.d~ 

@@ -1,0 +1,29 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+	CutSceneId(Player1)
+	PlaySound("EFF_M23C")
+	SetGlobal("H#LeoQuest","GLOBAL",18)
+	ActionOverride("H#Leon",CreateVisualEffectObject("SPROTECT",Myself))
+	DisplayStringHead("H#Tolger",3641) //  If you wish to die, I am pleased to assist
+	Wait(2)
+	ActionOverride("H#Tolger",ForceSpell("H#Leon",CUTSCENE_SPELLSTRIKE))
+	Wait(2)
+	ActionOverride("H#Leon",ForceSpell("H#Tolger",CUTSCENE_RUBY_RAY_OF_REVERSAL))
+	Wait(2)
+	ActionOverride("H#Leon",ForceSpell("H#Tolger",CUTSCENE_DAMAGE_1C))
+	Wait(2)
+	ActionOverride("H#Leon",ForceSpell("H#Tolger",CUTSCENE_PHANTASMAL_KILLER))
+	Wait(2)
+	DisplayStringHead("H#Tolger",19689) // Uh... I...
+	Wait(5)
+	CreateVisualEffectObject("SPDIMNDR","H#Tolger")
+	PlaySound("EFF_M29")
+	ActionOverride("H#Tolger",DestroySelf())
+	Wait(2)
+	DisplayStringHead("H#Leon",9972) // Let's go then.
+	Wait(2)
+	EndCutSceneMode()
+	ActionOverride("H#Leon",StartDialogueNoSet("Player1"))
+END

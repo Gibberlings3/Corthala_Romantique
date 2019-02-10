@@ -1,0 +1,168 @@
+
+
+//Resurrection
+IF
+    Global("_rc_restcheck","GLOBAL",0)
+    GlobalGT("H#ValygarVampire","GLOBAL",4)
+    Global("H#Resurrected","GLOBAL",1)
+    InParty(Myself)
+    See(Player1)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    CombatCounter(0)
+    Global("H#ValygarRomanceActive","GLOBAL",2)
+THEN
+    RESPONSE #100
+       SetGlobal("H#Resurrected","GLOBAL",2)
+       //PlaySong(999999)
+       MoveViewObject("Valygar",INSTANT)
+	RealSetGlobalTimer("H#RestBanter","GLOBAL",%ValygarRomanceTimer_long%)
+       StartDialogNoSet(Player1)
+END
+
+
+
+//LoveTalks at Rest
+/* Valygar's book, GlobalGT("H#LoveTalk","LOCALS",4) */
+IF
+    Global("_rc_restcheck","GLOBAL",0)
+    InParty(Myself)
+    See(Player1)
+    RealGlobalTimerExpired("H#RestBanter","GLOBAL")
+    OR(2)
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    CombatCounter(0)
+    !AreaType(DUNGEON)
+    GlobalGT("H#LoveTalk","LOCALS",4)
+    Global("H#LoveTalkRest","LOCALS",0)
+THEN
+    RESPONSE #100
+	SetGlobal("H#LoveTalkRest","LOCALS",1)
+	RealSetGlobalTimer("H#RestBanter","GLOBAL",%ValygarRomanceTimer_long%)
+        RealSetGlobalTimer("H#ValygarRomance","GLOBAL",%ValygarRomanceTimer%)
+        //PlaySong(999999)
+	StartDialogNoSet(Player1)
+END
+
+
+
+/* My fearless leader, GlobalGT("H#LoveTalk","LOCALS",14) */
+IF
+    Global("_rc_restcheck","GLOBAL",0)
+    InParty(Myself)
+    See(Player1)
+    RealGlobalTimerExpired("H#RestBanter","GLOBAL")
+    OR(2)
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    CombatCounter(0)
+    !AreaType(DUNGEON)
+    GlobalGT("H#LoveTalk","LOCALS",14)
+    Global("H#LoveTalkRest","LOCALS",2)
+THEN
+    RESPONSE #100
+	SetGlobal("H#LoveTalkRest","LOCALS",3)
+	RealSetGlobalTimer("H#RestBanter","GLOBAL",%ValygarRomanceTimer_long%)
+        RealSetGlobalTimer("H#ValygarRomance","GLOBAL",%ValygarRomanceTimer%)
+        //PlaySong(999999)
+	StartDialogNoSet(Player1)
+END
+
+//It's freezing
+IF
+    Global("_rc_restcheck","GLOBAL",0)
+    InParty(Myself)
+    See(Player1)
+    RealGlobalTimerExpired("H#RestBanter","GLOBAL")
+    OR(2)
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    CombatCounter(0)
+    !AreaType(CITY)
+    Global("H#LoveTalkRest","LOCALS",4)
+THEN
+    RESPONSE #100
+	SetGlobal("H#LoveTalkRest","LOCALS",5)
+	RealSetGlobalTimer("H#RestBanter","GLOBAL",%ValygarRomanceTimer_long%)
+        RealSetGlobalTimer("H#ValygarRomance","GLOBAL",%ValygarRomanceTimer%)
+        //PlaySong(999999)
+	StartDialogNoSet(Player1)
+END
+
+
+//Star gazing
+IF
+    Global("_rc_restcheck","GLOBAL",0)
+    InParty(Myself)
+    See(Player1)
+    RealGlobalTimerExpired("H#RestBanter","GLOBAL")
+    OR(2)
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    CombatCounter(0)
+    OR(2)
+	AreaType(OUTDOOR)
+	AreaType(FOREST)
+    Global("H#LoveTalkRest","LOCALS",6)
+THEN
+    RESPONSE #100
+	SetGlobal("H#LoveTalkRest","LOCALS",7)
+	RealSetGlobalTimer("H#RestBanter","GLOBAL",%ValygarRomanceTimer_long%)
+        RealSetGlobalTimer("H#ValygarRomance","GLOBAL",%ValygarRomanceTimer%)
+        //PlaySong(999999)
+	StartDialogNoSet(Player1)
+END
+
+//Banters at Rest
+IF
+    Global("_rc_restcheck","GLOBAL",0)
+    InParty(Myself)
+    InParty("Mazzy")
+    See("Mazzy")
+    
+    OR(2)
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
+    !StateCheck("Mazzy",CD_STATE_NOTVALID)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    Global("H#Mazzy1","LOCALS",0)
+    GlobalGT("H#LoveTalk","LOCALS",4)
+    OR(2)
+       Global("MazzyValygar","GLOBAL",1)
+       Global("MazzyValygar","GLOBAL",2)
+    RealGlobalTimerExpired("H#RestBanter","GLOBAL")
+THEN
+    RESPONSE #100
+       SetGlobal("H#Mazzy1","LOCALS",1)
+       SmallWait(1)
+       RealSetGlobalTimer("H#RestBanter","GLOBAL",%ValygarRomanceTimer_long%)
+       StartDialogNoSet("Mazzy")
+       SmallWait(1)
+END
+
+//Banters at WakeUp
+IF
+    InParty(Myself)
+    See(Player1)
+    InParty("Korgan")
+    See("Korgan")
+    !StateCheck("Korgan",CD_STATE_NOTVALID)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    CombatCounter(0)
+    !See([ENEMY])
+    Global("H#Korgan3","LOCALS",0)
+THEN
+    RESPONSE #100
+       RealSetGlobalTimer("H#RestBanter","GLOBAL",%ValygarRomanceTimer_long%)
+        SetGlobal("H#Korgan3","LOCALS",1)
+END
+

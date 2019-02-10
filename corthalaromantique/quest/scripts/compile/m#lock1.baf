@@ -1,0 +1,25 @@
+// Cutscene that moves Leonora to the sphere for locking
+
+IF
+    True()
+THEN
+    RESPONSE #100
+        CutSceneId(Player1)
+        FadeToColor([20.0],0)
+	Wait(2)
+	SetGlobal("H#LeoQuest","GLOBAL",20)
+	ActionOverride("H#LEON",MoveBetweenAreas("AR0400",[671.1099],5))
+	LeaveAreaLUA("AR0400","",[613.1121],0)
+	ActionOverride(Player2,LeaveAreaLUA("AR0400","",[556.1088],12))
+	ActionOverride(Player3,LeaveAreaLUA("AR0400","",[480.1042],12))
+	ActionOverride(Player4,LeaveAreaLUA("AR0400","",[601.1169],12))
+	ActionOverride(Player5,LeaveAreaLUA("AR0400","",[549.1152],12))
+	ActionOverride(Player6,LeaveAreaLUA("AR0400","",[590.1221],12))
+	MultiPlayerSync()
+        Wait(2)
+        FadeFromColor([20.0],0)
+        Wait(2)
+        EndCutSceneMode()
+	ActionOverride("H#LEON",StartDialogueNoSet("Valygar"))
+END
+

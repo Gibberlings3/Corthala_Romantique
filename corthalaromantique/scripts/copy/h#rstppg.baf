@@ -1,0 +1,23 @@
+// b!rest4.baf - POCKET PLANE - cutscene "rest" that runs after a night talk, preventing dreams or other rest banters from kicking in when the usual RestParty() events aren't wanted - be careful with this one! 
+
+/*
+And finally, this one works in the Pocket Plane. I'm advising caution here because I'm not sure if the Pocket Plane challenges are cued after certain game events, whether they're cued by physically traveling to the Pocket Plane, or whether they're cued by resting once you're there. It would be a real bummer to have to stay an extra night just because a challenge was missed. I *think* the challenges are cued by game events, and that the party is returned to the Pocket Plane to face the challenges after travel is initiated, but I would check, just to be safe.
+*/
+
+
+IF 
+	True() 
+THEN 
+	RESPONSE #100 
+		CutSceneId(Player1) 
+		Rest() 
+		ActionOverride(Player2,Rest()) 
+		ActionOverride(Player3,Rest()) 
+		ActionOverride(Player4,Rest()) 
+		ActionOverride(Player5,Rest()) 
+		ActionOverride(Player6,Rest()) 
+		StartMovie("POCKETZZ") 
+		MoveViewObject(Player1,INSTANT)
+		Wait(1) 
+		EndCutSceneMode() 
+END

@@ -1,0 +1,249 @@
+//Original
+
+//PC ascended
+
+//1. did quest with Leo
+
+IF
+  Global("StartEndBios","AR6200",1)
+  InParty("Valygar")
+  Global("ValygarBio","GLOBAL",0)
+  Global("H#ValygarRomanceActive","GLOBAL",2)
+    Global("PlayerChoseEssence","GLOBAL",1)
+OR(2)
+!Global("H#GuardTheSphere","GLOBAL",0)
+!Global("H#LockTheSphere","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("ValygarBio","GLOBAL",1)
+    TextScreen("PVALY01")
+    SmallWait(1)
+    Continue()
+END
+
+//2. did not do quest with Leo
+
+IF
+  Global("StartEndBios","AR6200",1)
+  InParty("Valygar")
+  Global("ValygarBio","GLOBAL",0)
+  Global("H#ValygarRomanceActive","GLOBAL",2)
+  Global("PlayerChoseEssence","GLOBAL",1)
+Global("H#GuardTheSphere","GLOBAL",0)
+Global("H#LockTheSphere","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("ValygarBio","GLOBAL",1)
+    TextScreen("PVALY02")
+    SmallWait(1)
+    Continue()
+END
+
+//PC did not ascend
+
+//3. Marriage Proposed at the Throne, wanted to sail to Zakhara, did not want children
+
+IF
+!Race(Player1,ELF)
+!Class(Player1,RANGER)
+  Global("StartEndBios","AR6200",1)
+  InParty("Valygar")
+  Global("ValygarBio","GLOBAL",0)
+  Global("H#ValygarRomanceActive","GLOBAL",2)
+  Global("PlayerChoseEssence","GLOBAL",0)
+Global("P#VAMAR","GLOBAL",1)
+Global("P#ValygarTravel","GLOBAL",2)
+!Global("P#ValygarChild","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("ValygarBio","GLOBAL",1)
+    TextScreen("PVALY03")
+    SmallWait(1)
+    Continue()
+END
+
+//4. Marriage Proposed at the Throne, wanted to sail to Zakhara, did not want children
+
+IF
+!Race(Player1,ELF)
+!Class(Player1,RANGER)
+  Global("StartEndBios","AR6200",1)
+  InParty("Valygar")
+  Global("ValygarBio","GLOBAL",0)
+  Global("H#ValygarRomanceActive","GLOBAL",2)
+  Global("PlayerChoseEssence","GLOBAL",0)
+Global("P#VAMAR","GLOBAL",1)
+Global("P#ValygarTravel","GLOBAL",2)
+Global("P#ValygarChild","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("ValygarBio","GLOBAL",1)
+    TextScreen("PVALY04")
+    SmallWait(1)
+    Continue()
+END
+
+//5. Marriage proposed, PC did not want to sail in Zakhara, wanted children
+
+IF
+!Race(Player1,ELF)
+!Class(Player1,RANGER)
+  Global("StartEndBios","AR6200",1)
+  InParty("Valygar")
+  Global("ValygarBio","GLOBAL",0)
+  Global("H#ValygarRomanceActive","GLOBAL",2)
+  Global("PlayerChoseEssence","GLOBAL",0)
+Global("P#VAMAR","GLOBAL",1)
+!Global("P#ValygarTravel","GLOBAL",2)
+Global("P#ValygarChild","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("ValygarBio","GLOBAL",1)
+    TextScreen("PVALY05")
+    SmallWait(1)
+    Continue()
+END
+
+//6.Marriage proposed, PC did not want to sail in Zakhara, did not want children
+
+IF
+!Race(Player1,ELF)
+!Class(Player1,RANGER)
+  Global("StartEndBios","AR6200",1)
+  InParty("Valygar")
+  Global("ValygarBio","GLOBAL",0)
+  Global("H#ValygarRomanceActive","GLOBAL",2)
+  Global("PlayerChoseEssence","GLOBAL",0)
+Global("P#VAMAR","GLOBAL",1)
+!Global("P#ValygarTravel","GLOBAL",2)
+!Global("P#ValygarChild","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("ValygarBio","GLOBAL",1)
+    TextScreen("PVALY06")
+    SmallWait(1)
+    Continue()
+END
+
+//7. Marriage not proposed or rejected, PC did not want to sail in Zakhara, did not want children, did Leonora's quest
+
+IF
+!Race(Player1,ELF)
+!Class(Player1,RANGER)
+  Global("StartEndBios","AR6200",1)
+  InParty("Valygar")
+  Global("ValygarBio","GLOBAL",0)
+  Global("H#ValygarRomanceActive","GLOBAL",2)
+  Global("PlayerChoseEssence","GLOBAL",0)
+  OR(2)
+!Global("P#VAMAR","GLOBAL",1)
+Global("P#VANOMAR","GLOBAL",1)
+OR(2)
+!Global("H#GuardTheSphere","GLOBAL",0)
+!Global("H#LockTheSphere","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("ValygarBio","GLOBAL",1)
+    TextScreen("PVALY07")
+    SmallWait(1)
+    Continue()
+END
+
+//8. Marriage not proposed or rejected, did not do Leonora's quest
+
+IF
+!Race(Player1,ELF)
+!Class(Player1,RANGER)
+  Global("StartEndBios","AR6200",1)
+  InParty("Valygar")
+  Global("ValygarBio","GLOBAL",0)
+  Global("H#ValygarRomanceActive","GLOBAL",2)
+  Global("PlayerChoseEssence","GLOBAL",0)
+  OR(2)
+!Global("P#VAMAR","GLOBAL",1)
+Global("P#VANOMAR","GLOBAL",1)
+Global("H#GuardTheSphere","GLOBAL",0)
+Global("H#LockTheSphere","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("ValygarBio","GLOBAL",1)
+    TextScreen("PVALY08")
+    SmallWait(1)
+    Continue()
+END
+
+//9. Elven PC, Marriage proposed
+
+IF
+Race(Player1,ELF)
+Global("StartEndBios","AR6200",1)
+  InParty("Valygar")
+  Global("ValygarBio","GLOBAL",0)
+  Global("H#ValygarRomanceActive","GLOBAL",2)
+  Global("PlayerChoseEssence","GLOBAL",0)
+Global("P#VAMAR","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("ValygarBio","GLOBAL",1)
+    TextScreen("PVALY09")
+    SmallWait(1)
+    Continue()
+END
+
+//10. Elven PC, Marriage not proposed or rejected
+
+IF
+Race(Player1,ELF)
+Global("StartEndBios","AR6200",1)
+  InParty("Valygar")
+  Global("ValygarBio","GLOBAL",0)
+  Global("H#ValygarRomanceActive","GLOBAL",2)
+  Global("PlayerChoseEssence","GLOBAL",0)
+  OR(2)
+!Global("P#VAMAR","GLOBAL",1)
+Global("P#VANOMAR","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("ValygarBio","GLOBAL",1)
+    TextScreen("PVALY10")
+    SmallWait(1)
+    Continue()
+END
+
+//11. Ranger PC, did not want children
+
+IF
+!Race(Player1,ELF)
+Class(Player1,RANGER)
+Global("StartEndBios","AR6200",1)
+  InParty("Valygar")
+  Global("ValygarBio","GLOBAL",0)
+  Global("H#ValygarRomanceActive","GLOBAL",2)
+  Global("PlayerChoseEssence","GLOBAL",0)
+!Global("P#ValygarChild","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("ValygarBio","GLOBAL",1)
+    TextScreen("PVALY11")
+    SmallWait(1)
+    Continue()
+END
+
+//12. Ranger PC, wanted children
+
+IF
+!Race(Player1,ELF)
+Class(Player1,RANGER)
+Global("StartEndBios","AR6200",1)
+  InParty("Valygar")
+  Global("ValygarBio","GLOBAL",0)
+  Global("H#ValygarRomanceActive","GLOBAL",2)
+  Global("PlayerChoseEssence","GLOBAL",0)
+!Global("P#ValygarChild","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("ValygarBio","GLOBAL",1)
+    TextScreen("PVALY12")
+    SmallWait(1)
+    Continue()
+END

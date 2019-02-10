@@ -1,0 +1,137 @@
+//Initial Timer for Leo's Quest
+//The Quest
+
+IF
+    Global("H#LeoQuest","GLOBAL",0)
+    Global("LavokDead","GLOBAL",1)
+    GlobalLT("Chapter","GLOBAL",%bg2_chapter_7%)
+   
+THEN
+    RESPONSE #100
+        SetGlobal("H#LeoQuest","GLOBAL",1)
+        SetGlobalTimer("H#LeoQuestTimer","GLOBAL",ONE_DAY)
+END
+
+//Valygar suggests Leonora as guardian to the sphere
+/* activation */
+IF
+    InParty(Myself)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    See(Player1)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    CombatCounter(0)
+    !See([ENEMY])
+    GlobalLT("Chapter","GLOBAL",%bg2_chapter_7%)
+    GlobalTimerExpired("H#LeoQuestTimer","GLOBAL")
+    Global("H#LeoQuest","GLOBAL",1)    
+THEN
+    RESPONSE #100
+        SetGlobal("H#LeoQuest","GLOBAL",2)
+END
+
+/* initiate */
+IF
+    InParty(Myself)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    See(Player1)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    CombatCounter(0)
+    !See([ENEMY])
+    Global("H#LeoQuest","GLOBAL",2)
+THEN
+    RESPONSE #100
+        StartDialogueNoSet(Player1)
+END
+
+
+//Enter Valygar's Cabin to meet Leonora
+IF
+    InParty(Myself)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    See(Player1)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    CombatCounter(0)
+    !See([ENEMY])
+    AreaCheck("AR1101")
+    Global("H#LeoQuest","GLOBAL",3)
+THEN
+    RESPONSE #100
+        SetGlobal("H#LeoQuest","GLOBAL",4)
+END
+IF
+    AreaCheck("AR1101")
+    Global("H#LeoQuest","GLOBAL",4)
+THEN
+    RESPONSE #100
+        Face(13)
+        Dialog("Valygar")
+END
+
+// Quest
+
+IF
+ 	Global("H#LeoQuest","GLOBAL",7)
+THEN
+	RESPONSE #100
+	CreateVisualEffect("spuseany",[568.312])
+	Deactivate("H#LEON")
+	Wait(2)
+	SetGlobal("H#LeoQuest","GLOBAL",8)
+END
+
+IF
+	Global("H#LeoQuest","GLOBAL",8)
+	!See("H#LEON")
+THEN
+	RESPONSE #100
+	Dialogue(Player1)
+END
+
+IF
+ 	Global("H#LeoQuest","GLOBAL",9)
+THEN
+	RESPONSE #100
+	CreateVisualEffect("spuseany",[568.312])
+	Activate("H#LEON")
+	Wait(2)	
+	SetGlobal("H#LeoQuest","GLOBAL",10)
+END
+
+IF
+	Global("H#LeoQuest","GLOBAL",10)
+	See("H#LEON")
+THEN
+	RESPONSE #100
+	Dialogue("H#LEON")
+END
+
+//Leonora guards the Sphere
+IF
+    Global("H#GuardTheSphere","GLOBAL",1)
+    Global("H#FirstEnter","LOCALS",0)
+    AreaCheck("AR0400")
+THEN
+    RESPONSE #100
+    SetGlobal("H#FirstEnter","LOCALS",1)
+END
+
+IF
+    Global("H#GuardTheSphere","GLOBAL",1)
+    Global("H#FirstEnter","LOCALS",1)
+    AreaCheck("AR0411")
+THEN
+    RESPONSE #100
+    SetGlobal("H#FirstEnter","LOCALS",2)
+    CreateCreature("H#GFLES",[2974.2821],0)
+    CreateCreature("H#GFLES",[3141.2684],0)
+    CreateCreature("H#GCLAY",[2905.2815],0)
+    CreateCreature("H#GCLAY",[3109.2632],0)
+    CreateCreature("H#GBRAIN",[2841.2795],0)
+    CreateCreature("H#GBRAIN",[3054.2592],0)
+    CreateCreature("H#GSTONE",[2792.2751],0)
+    CreateCreature("H#GSTONE",[2981.2572],0)
+    CreateCreature("H#GIRON",[2771.2693],0)
+    CreateCreature("H#GIRON",[2909.2580],0)
+    CreateCreature("H#GADAM",[2796.2643],0)
+    CreateCreature("H#GADAM",[2839.2604],0)
+END

@@ -1,0 +1,18 @@
+//These scripts keep scenes that trigger on rest from triggering on the same rest as dreams in Throne of Bhaal. EXTEND_BOTTOM ~baldur25.bcs~
+
+//Rest check timer.
+IF
+	Global("_rc_restcheck","GLOBAL",2)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",3)
+	RealSetGlobalTimer("_rc_restchecktimer1","GLOBAL",180)
+END
+
+IF
+	RealGlobalTimerExpired("_rc_restchecktimer1","GLOBAL")
+		Global("_rc_restcheck","GLOBAL",3)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",0)
+END

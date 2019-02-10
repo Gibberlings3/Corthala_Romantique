@@ -1,0 +1,8 @@
+IF
+    Global("H#LeoQuest","GLOBAL",5)
+    See("Valygar")
+THEN
+    RESPONSE #100
+        SetGlobal("H#LeoQuest","GLOBAL",6)
+        StartDialogueNoSet("Valygar")
+END

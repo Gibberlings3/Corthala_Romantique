@@ -1,0 +1,45 @@
+
+
+IF	//1st Viconia Romance Throne of Bhaal Rest. EXTEND_BOTTOM ~vico25.bcs~
+	RealGlobalTimerExpired("ExpViconiaRomance","GLOBAL")
+	Global("ViconiaRomanceActive","GLOBAL",2)
+	See(Player1)
+	CombatCounter(0)
+	Global("ExpLoveTalk","LOCALS",5)
+	Global("_rc_restcheck","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",1)
+END
+	
+IF
+	Global("ExpLoveTalk","LOCALS",6)
+	Global("_rc_ExpLoveTalk","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",2)
+	SetGlobal("_rc_ExpLoveTalk","LOCALS",1)
+END
+
+
+IF	//2nd Viconia Romance Throne of Bhaal Rest. EXTEND_BOTTOM ~vico25.bcs~
+	RealGlobalTimerExpired("ExpViconiaRomance","GLOBAL")
+	Global("ViconiaRomanceActive","GLOBAL",2)
+	See(Player1)
+	CombatCounter(0)
+	Global("ExpLoveTalk","LOCALS",13)
+	Global("_rc_restcheck","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",1)
+END
+	
+IF
+	Global("ExpLoveTalk","LOCALS",14)
+	Global("_rc_ExpLoveTalk","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",2)
+	SetGlobal("_rc_ExpLoveTalk","LOCALS",1)
+END
+

@@ -1,0 +1,21 @@
+
+//The Fight
+IF
+    Global("H#AnomenValygarFight","GLOBAL",1)
+    Global("H#CNAnomenConflict","LOCALS",6)
+    Global("H#ValygarStopsFight","GLOBAL",0)
+THEN
+    RESPONSE #100
+        MakeUnselectable(18)
+        EquipMostDamagingMelee()
+        Attack("Valygar")
+END
+//Valygar is killed
+IF
+    Global("H#ValygarKilled","GLOBAL",1)
+THEN
+    RESPONSE #100
+        SetGlobal("H#ValygarKilled","GLOBAL",2)
+        Interact(Player1)
+END
+

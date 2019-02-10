@@ -1,0 +1,21 @@
+IF
+    Global("H#ValygarVampire","GLOBAL",1)
+THEN
+    RESPONSE #100
+        SetGlobal("H#ValygarVampire","GLOBAL",2)
+        CreateCreature("H#VMPVAL",[1473.332],2)
+        SetGlobal("H#VampValCreated","GLOBAL",1)
+END
+
+IF
+    Dead("H#VMPVAL")
+    GlobalLT("H#ValygarVampire","GLOBAL",3)
+THEN
+    RESPONSE #100
+        SetGlobal("H#VampireTest","GLOBAL",300)
+        SetGlobal("H#ValygarVampire","GLOBAL",3)
+	ActionOverride("H#VMPVAL",DropInventory())
+	ActionOverride("H#VMPVAL",DestroySelf())
+END
+
+

@@ -1,0 +1,22 @@
+//Swimming Flirt
+IF
+    Global("_rc_restcheck","GLOBAL",0)
+    OR(2)
+        Global("H#ValygarRomanceActive","GLOBAL",1)
+        Global("H#ValygarRomanceActive","GLOBAL",2)
+    Global("H#GoneSwimming","LOCALS",0)
+    InParty(Myself)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    Detect(Player1)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    CombatCounter(0)
+    OR(2)
+        AreaCheck("AR1100")
+        AreaCheck("AR1200")
+    GlobalGT("H#Lovetalk","LOCALS",20)
+THEN
+    RESPONSE #100
+        SetGlobal("H#GoneSwimming","LOCALS",1)
+        StartDialogueNoSet(Player1)
+        SmallWait(1)
+END

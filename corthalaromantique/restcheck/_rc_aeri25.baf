@@ -1,0 +1,19 @@
+IF	//Aerie Romance Throne of Bhaal Rest. EXTEND_BOTTOM ~aeri25.bcs~
+	Global("AerieRomanceActive","GLOBAL",2)
+	See(Player1)
+	CombatCounter(0)
+	Global("ExpLoveTalk","LOCALS",3)
+	Global("_rc_restcheck","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",1)
+END
+
+IF	
+	Global("ExpLoveTalk","LOCALS",4)
+	Global("_rc_ExpLoveTalk4","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",2)
+	SetGlobal("_rc_ExpLoveTalk4","LOCALS",1)
+END

@@ -1,0 +1,23 @@
+
+IF	//Hexxat Romance Throne of Bhaal Rest. EXTEND_BOTTOM ~hexxa25.bcs~
+	Global("OHH_korkorran","GLOBAL",1)
+	InParty(Myself)
+	!AreaCheck("OH5500")
+	!AreaCheck("OH7300")
+	!AreaCheck("AR4500")
+	Global("OHH_final","GLOBAL",0)
+	Global("_rc_restcheck","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",1)
+END
+
+IF	
+	Global("OHH_final","GLOBAL",1)
+	Global("_rc_OHH_final","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",2)
+	SetGlobal("_rc_OHH_final","GLOBAL",1)
+END
+

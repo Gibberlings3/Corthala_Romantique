@@ -1,0 +1,22 @@
+//No Multiromancing
+IF
+    InParty("J#Kelsey")
+    Global("H#ValygarRomanceActive","GLOBAL",2)
+    Global("J#KelseyRomanceActive","GLOBAL",1)
+    Global("H#DeactivateRomKelsey","LOCALS",0)
+THEN
+    RESPONSE #100
+       SetGlobal("J#KelseyRomanceActive","GLOBAL",3)
+	SetGlobal("H#DeactivateRomKelsey","LOCALS",1)
+END
+
+
+IF
+    InParty(Myself)
+    InParty("J#Kelsey")
+    Global("J#KelseyRomanceActive","GLOBAL",2)
+    !Global("H#ValygarRomanceActive","GLOBAL",3)
+THEN
+    RESPONSE #100
+        SetGlobal("H#ValygarRomanceActive","GLOBAL",3)
+END

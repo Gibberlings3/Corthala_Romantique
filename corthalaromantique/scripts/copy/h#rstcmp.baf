@@ -1,0 +1,20 @@
+// b!rest2.baf - CAMP - cutscene "rest" that runs after a night talk, preventing dreams or other rest banters from kicking in when the usual RestParty() events aren't wanted
+
+/* Use this one in combination with AreaType(OUTDOOR) if the player is camping out. */
+
+IF 
+	True() 
+THEN 
+	RESPONSE #100 
+		CutSceneId(Player1) 
+		Rest() 
+		ActionOverride(Player2,Rest()) 
+		ActionOverride(Player3,Rest()) 
+		ActionOverride(Player4,Rest()) 
+		ActionOverride(Player5,Rest()) 
+		ActionOverride(Player6,Rest()) 
+		StartMovie("RESTCAMP") 
+		MoveViewObject(Player1,INSTANT)
+		Wait(1) 
+		EndCutSceneMode() 
+END

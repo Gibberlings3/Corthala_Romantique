@@ -1,0 +1,14 @@
+IF
+	Global("P#VaPresent","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
+	GlobalGT("P#VaFreeTalk2","GLOBAL",4)
+	InParty("Valygar")
+	InMyArea("Valygar")
+	InMyArea(Player1)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	!StateCheck("Valygar",CD_STATE_NOTVALID)
+THEN
+    RESPONSE #100
+		SetGlobal("P#VaPresent","GLOBAL",2)
+        	Dialogue(Player1)
+END

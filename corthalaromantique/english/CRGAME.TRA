@@ -1,0 +1,197 @@
+//
+@0    = ~Ho there! More Cowled ones or their servants, no doubt. By the gods, I swear you'll not live to take me to that damnable sphere!~ [VALYGA01]
+@1    = ~Magdelene's Necklace~
+@2    = ~A string of beautiful pearls in white, pink and black~
+@3    = ~Corthala Necklace
+
+This necklace consists of white, pink and black pearls. Mysterious shimmer enhances its exquisite beauty and you can guess that it is imbibed with a strong enchantment. The necklace once belonged to Magdelene Corthala, a mage of no small repute. Her son, Valygar the Ranger, had given the ornament to <CHARNAME> in hope that she will fancy wearing it.
+
+STATISTICS
+
++2 Intelligence Bonus
+Lore value is increased by 50~
+/*
+@7    = 
+@8    = 
+@9    = 
+*/
+@10   = ~Magdelene~
+@11   = ~Valygar was captured by Bodhi and infected with vampirism, forcing you to slay him. There may be some way to revive him, though you don't know what it would be.~
+@12   = ~Magdelene Corthala~
+@13   = ~Leonora~
+@14   = ~Leonora De Vallenzzi~
+@15   = ~Stephan~
+
+@16   = ~Andreas~
+@17   = ~Andreas Corthala~
+@18   = ~Girdle of the Champion~
+@19   = ~A renown Sembian bard, Andarel traveled North to collect the folklore of the barbarian tribes. His first encounter with the Black Raven Tribe proved to be far from peaceful. He was captured and was saved from death by intervention of the chief's daughter, Yadwiga, who wished to marry him, despite his shortcomings as a warrior. Yadwiga was promised to Roudhar, the Charging Boar, and the chief declared that his daughter would wed the one who should win a challenge. While Andarel was preparing to his imminent death, Yadwiga brought him this girdle and assured him that the magic within it will make him the winner. The faith in the item helped Andarel to last through the challenge, but he was clearly the weaker of the two contenders. However the chief declared that Yadwiga is to marry the bard, for Roudhar is strong enough, while Andarel is weak and needs a good woman to support him. Recently, Cespanar, The Imp recovered the Girdle on the order of <CHARNAME> of Candlekeep to find a gift for her companion, Valygar Corthala of Amn.
+  STATISTICS:
+
+Special:  Lowers AC by 2
+          Can be worn with other magical items~
+@20   = ~Longbow~
+@21   = ~Longbow +3: The Wind Singer~
+@22   = ~The shaft of this longbow is made from a bone of an unknown beast. It is dark-colored, shiny and unadorned, yet it emanates a powerful enchantment. The nature of the incantation is obscure, but it is connected to the element of Air. The only time when the bow appeared in the recent ages is when Cespanar the Imp has recovered the bow on the order of <CHARNAME> of Candlekeep to find a gift for her companion, Valygar Corthala of Amn.   
+
+STATISTICS:
+
+THACO: +4
+Dexterity: +2, while equipped
+Special: Summons a Greater Air Elemental once per day
+Weight: 2
+Speed Factor: 5
+Proficiency Type: Bow Weapons
+Type:  2-handed
+Requires: 6 Strength
+Not Usable By:
+ Druid
+ Cleric
+ Mage
+ Thief~
+@23   = ~Katana~
+@24   = ~Katana, The Dragon Wing~
+@25   = ~In the Eastern land of Wa, Amakura son of Amakuni, a famed swordsmith made the swords which never broke in the heat of the battle. His own son, Achito, proved disobedient and left Amakura's household to become an adventurer without permission from his father. Amakura cursed and disowned Achito for the dishonor he placed on his family. For many years Amakura acted as if he had not fathered Achito. When the autumn of Amakuro's life came and he knew that his wife would not flower and bear fruit again, he locked himself in a smithy. For many days he labored and prayed to the gods, until he forged the finest sword ever. He announced that he made the katana for Achito, thus going back on his oath. Before Amakura's house was dishonored once again by this oathbreaking, the gods so wished that Achito was slain in battle. Upon receiving this news, Amakura gave his life to the gods cleansing the katana of any dishonor by his own blood. Amakura's widow presented the weapon to the Emperor of Wa. 
+
+In 833 of Shou calendar, Kasada Dynasty of Wa Emperors ended, when the last Emperor failed to produce a heir. Toda no Nagamori was chosen as the Regent, while the search for a suitable heir continued. Goshukara Dynasty was enthroned, but the regent covered himself with dishonor conspiring to overthrow his new Emperor in order to retain his power. The rebellion was suppressed and Toda no Nagamori's clan scattered, but one of his sons, Habaki, escaped Wa carrying with him nothing, but the clothes on his back and Amakuro's katana. He later arrived to Faerun and traveled much, selling himself out as a mercenary and a bounty hunter. Habaki did not abandon his dreams of power, and he aligned himself with the Cult of the Dragon. He indeed advanced in the secret society and his katana was enchanted by the most powerful wizards of the time, and was since known as the Dragon Wing. After Habaki's death, the Dragon Wing disappeared, and it was said that only a man of unquestionable honor would wield the weapon next. Cespanar, The Imp recovered the Dragon Wing on the order of <CHARNAME> of Candlekeep to find a gift for her companion, Valygar Corthala of Amn.
+
+STATISTICS:
+
+Damage:  1D10+4
+Special: Polymorph the wielder into a Dragon for a short period of time once per day
+Damage type:  slashing
+Weight:  6
+Speed Factor: 4
+Proficiency Type: Katana
+Type:  1-handed
+Requires: 6 Strength
+Not Usable By:
+ Druid
+ Cleric
+ Mage~
+@26   = ~The Ring of Mirroring: Cowled Wizards' Bane~
+@27   = ~The Amnish ranger, Valygar Corthala was renown for his feud with the order of the Cowled Wizards. To protect him somewhat from the intrigues of his malevolent foes, his lover, <CHARNAME> of Candlekeep ordered Cespanar the Imp to find something that can shield the ranger from the magical attacks. Quite sentimental about the relationships between his mistress and Valygar Corthala, the Imp hunted down a magical ring, which does just that and might also serve as a hint to the couple.
+
+STATISTICS:
+
+Deflects all spell damage. This includes offensive spells like magic missile, but not disabling (non-damage) spells such as hold person.~
+@28   = ~Valygar's Hunting Gloves~
+@29   = ~It is a pair of simple deer-skin hunting gloves. Each glove is embroidered with the Silver Hawk - the sigil of the House Corthala of Amn. These gloves were a present by <CHARNAME> of Candelkeep, the Hero of Baldur's Gate for her adventuring companion, Valygar Corthala of Amn. The bards sing the story of their love across the Faerun in different variations. Sometimes it is a tragic song of two doomed lovers, and sometimes it has a happy end. Similarly to everything connected with the life and deeds of <CHARNAME> the truth is difficult to separate from myth. For example, there are no documents confirming that <CHARNAME> is familiar with the art of cross-stitching. The gloves will keep one's hands warm, and are surely of a great sentimental value to Valygar Corthala.~
+@30   = ~The War of the Five left Amn and neighboring countries suspicious of all that was connected to the spawn of Bhaal. The role that <CHARNAME> of Candlekeep played in the events prior to her Ascension was not yet fully understood. One of her surviving companions, Valygar Corthala who already was famed as a man with dark past, dismal present and uncertain future received a lukewarm welcome in Athkatla, even if the direct prosecutions against him by the Cowled Wizards ceased. The only house that opened its doors to Valygar was that of Marquise DeVallenzzi. Athkatlan society soon was teaming with rumors about the unlikely relationship. They aimed to please the bored aristocrats, it seemed, engaged in a complicated and turbulent affair. The rumors had it that Corthala escaped to the Cloudpeek Mountains and Leonora searched for him with her dragon-mount; that Valygar the Necromancer put a silence spell on Leonora so that she could not say a word for a ten-day... To the surprise of onlookers, the affair ended after several years-in marriage. Valygar Corthala and Leonora DeVallenzzi had a wedding that was almost as spectacular as their affair had been and settled in the City of Coin for good.
+
+The scandalous fame attracted many a young heart to the man who once was called a criminal. In time, Valygar Corthala found himself a subject of much admiration among Athkatlan nobility. After much hesitation he accepted a position of Chief Inspector and whenever name Corthala is spoken in Amn nowadays, it is spoken with respect and love - much aided by the deeds of Valygar's pride and joy - his only son. For it came to pass that he, a sorcerer by blood, reformed Cowled Wizards bringing the much needed changes to the once mysterious and fearsome organization.~
+@31   = ~The controversial tale of the new Lady of Murder's ascension spread throughout the Realms like wild fire, marking the end of the Five's war. Stories told of <CHARNAME>'s former companions grew to legends in the passing of time. 
+
+Amongst these one stood out as the darkest, that of the 'Black Ranger', Vaylgar Corthala. Being famed as a lover of the Lady of Murder and opposed by the Cowled Wizards, Valygar was unable to retain permission to live in his native Athkatla. Due to the organization's influence, he was later forced to flee from Amn. He found shelter for a time in a newly created Cult of <CHARNAME> before making his way farther north, to the land which many a rogue and outcast call their home - the Icewind Dale. There the last Corthala spent the remainder of his days in solitude, serving as a caravan guard. He died without an issue.~
+
+@32   = ~Really, <CHARNAME> it should be you writing this... For you know the best what happened to your loyal friend Valygar after you have rejected your place in pantheon as a Lady of Murder. But I shall take up the task.
+
+Valygar traveled with <CHARNAME> and one day their road led to a village in Zakhara. To Valygar's surprise he found out that he had large family there, not a single member of which was a magic user. Magdelene's son and <CHARNAME> received a warm welcome. Before they knew it the whole village turned into a big carnival ground celebrating their marriage. Not to disappoint the gathering Valygar and <CHARNAME> exchanged their vows in front of all the gods that might be listening.
+
+Their marriage proved an eventful one; in Zakhara, when they want to praise someone for accomplishing great deeds in the short amount of time, they say that the person had Corthala's honeymoon. The saying originates from the fact that Valygar Corthala and his new wife, <CHARNAME>, are rumored to have saved the world at least thrice before their first anniversary. 
+
+They lived happily together for many years and died on the same day.~
+@33   = ~Really, <CHARNAME> it should be you writing this... For you know the best what happened to your loyal friend Valygar after you have rejected your place in pantheon as a Lady of Murder. But I shall take up the task.
+
+Valygar traveled with <CHARNAME> and one day their road led to a village in Zakhara. To Valygar's surprise he found out that he had large family there, not a single member of which was a magic user. Magdelene's son and <CHARNAME> received a warm welcome. Before they knew it the whole village turned into a big carnival ground celebrating their marriage. Not to disappoint the gathering, Valygar and <CHARNAME> exchanged their vows in front of all the gods that might be listening.
+
+They crossed many a country after leaving Zakhara, and sailed across the wide waters to see the mysterious Maztica, but after a while the longing for their homeland brought them back to the Sword Coast. Valygar and <CHARNAME> Corthala settled in Athkatla. In time, Valygar Corthala found himself a subject of much admiration among Athkatlan nobility.
+
+After much hesitation, he accepted the position of Chief inspector, and whenever the name Corthala is spoken in Amn nowadays, it is spoken with respect and love. The house's reputation has been greatly aided by the deeds of Valygar's pride and joy, his only son. For it came to pass that he, a sorcerer by blood, reformed Cowled Wizards bringing the much needed changes to the once mysterious and fearsome organization.~
+@34   = ~The western winds from the Sea of Storms blew in the new spring to Athkatla and with it came a ship that brought Valygar Corthala back from the Land of Fate. He had wandered in the Land of Fate for two long years and returned leaner, his eyes sitting deeper in their sockets. A certain thoughtfulness was now etched into him, but also he appeared calmer and surer. From what little he said of his time in Zakhara <CHARNAME> gathered that Valygar had met with Magdelene's relatives on his travels, and had been welcomed by them as a son.
+
+One thing did not change however - the love Valygar harbored in his heart for <CHARNAME>. Neither time, nor distance broke the bond that the two shared. 
+
+That year, in the time of harvests and plenty, following the age-long tradition, Valygar Corthala took <CHARNAME> of Candlekeep for his wife. The festivities were held in the Druid Grove and Trademeet. The fireworks, which were supplied by Jansen and Jansen flew into the night sky over the fountain on the main square lighting up the slightly chipped statues of the heroes of Trademeet. The delighted kids giggled at the large red hearts an unknown prankster painted at the two of them, which bore an astonishing resemblance to the bride and groom.
+
+Blessed by the Great Druid Cernd himself, the union was rich in happiness and love. Valygar and <CHARNAME> Corthala settled in Athkatla. In time, Valygar Corthala found himself a subject of much admiration among Athkatlan nobility.
+
+After much hesitation, he accepted the position of Chief inspector, and whenever the name Corthala is spoken in Amn nowadays, it is spoken with respect and love. The house's reputation has been greatly aided by the deeds of Valygar's pride and joy, his only son. For it came to pass that he, a sorcerer by blood, reformed Cowled Wizards bringing the much needed changes to the once mysterious and fearsome organization.~
+@35   = ~The western winds from the Sea of Storms blew in the new spring to Athkatla and with it came a ship that brought Valygar Corthala back from the Land of Fate. He had wandered in the Land of Fate for two long years and returned leaner, his eyes sitting deeper in their sockets. A certain thoughtfulness was now etched into him, but also he appeared calmer and surer. From what little he said of his time in Zakhara <CHARNAME> gathered that Valygar had met with Magdelene's relatives on his travels, and had been welcomed by them as a son.
+
+One thing did not change however - the love Valygar harbored in his heart for <CHARNAME>. Neither time, nor distance broke the bond that the two shared. 
+
+Before the spring was out, Valygar Corthala took <CHARNAME> of Candlekeep for his wife. The festivities were held in the Druid Grove and Trademeet. The fireworks, which were supplied by Jansen and Jansen flew into the night sky over the fountain on the main square lighting up the slightly chipped statues of the heroes of Trademeet. The delighted kids giggled at the large red hearts an unknown prankster painted at the two of them, which bore an astonishing resemblance to the bride and groom, but the newlyweds themselves had already left the town in search of new adventures. 
+
+Their marriage proved an eventful one; in Amn, when they want to praise someone for accomplishing great deeds in the short amount of time, they say that the person had Corthala's honeymoon. The saying originates from the fact that Valygar Corthala and his new wife, <CHARNAME>, are rumored to have saved the world at least thrice before their first anniversary.~
+@36   = ~Valygar and <CHARNAME> continued adventuring for several years after the end of the War of the Five. They were seen together as far North as Luskan and one legend placed them in Thay. The passion which engulfed Valygar's heart while <CHARNAME> was walking the razor's edge subsided in the later years and turned into the heartfelt friendship. 
+
+One day, the two met Leonora DeVellenzzi, who traveled with them for a time. When she indicated that it was time for her to return to Athkatla, Valygar asked for a leave from <CHARNAME> to follow the Marquise. 
+
+Leonora and Valygar traveled back to Athkatla, where he planned to assume a contemplative life on his family estate, but admirers among the nobility would not let him rest. He was pressured into assuming the title of Chief Inspector, a responsibility he did not want, but corruption within the city soon gained his ire. Surprising even himself, Valygar became an effective leader, and it was this term in office that truly restored the Corthala family name. 
+
+Valygar eventually married Leonora DeVallenzzi. The famous heroine, <CHARNAME> of Candlekeep, was the woman who danced the most at the wedding and drank heartily to the happiness of the newlyweds.
+
+Corthala's only son, the pride of Valygar's life, took the lessons of the father to heart. He would go on to lead the Cowled Wizards, becoming the organization's greatest agent of reform.~
+@37   = ~Valygar and <CHARNAME> continued adventuring for several years after the end of the War of the Five. They were seen together as far North as Luskan and one legend placed them in Thay. The passion which engulfed Valygar's heart while <CHARNAME> was walking the razor's edge subsided in the later years and turned into the heartfelt friendship. 
+
+Years past, and Valygar grew tired of the adventurous lifestyle his younger lover preferred to all else. He bid a fond farewell to <CHARNAME> intending to retire and assume a contemplative life on his family estate. However, due to continuing opposition by the Cowled Wizards, Valygar was unable to retain permission to live in his native Athkatla.
+
+Valygar went to live in Umar Hills and eventually married a local farmer's daughter. The famous heroine, <CHARNAME> of Candlekeep, was the woman who danced the most at the wedding and drank heartily to the happiness of the newlyweds.
+
+Corthala's only son, the pride of Valygar's life, took the lessons of the father to heart. He would go on to lead the Cowled Wizards, becoming the organization's greatest agent of reform.~
+@38   = ~Many elven elders shook their heads in disapproval at <CHARNAME> when they saw her heart given so completely to Valygar Corthala of Amn. In truth, to an idle observer, little will appear sadder than a bond between a human and an elf at the times when the human's days are running out. 
+
+If it made any difference to Valygar and <CHARNAME> they gave no sign of it. Inseparable and loyal to each other, the two traveled far and wide. They were seen together as far North as Luskan and one legend placed them in Thay. Some say that the two adventurers crossed the seas and ventured as far as Zakhara and Matzica. 
+
+When the evening of Valygar's life began, and his temples silvered, the couple disappeared for a time. None, save <CHARNAME> knows where and when the last of Corthalas died and is buried. 
+
+When <CHARNAME> reappeared, she was alone. Restless, she wandered thus for many years.  Eventually she met an Elven Lord, her equal in power, glory and years, who ended her years of loneliness. Together they left Faerun for Evermeet. 
+
+But it is <CHARNAME>'s spring love and her human lover, Valygar Corthala, that lives on in the songs of the bards.~
+@39   = ~Valygar and <CHARNAME> continued adventuring for several years after the end of the War of the Five. They were seen together as far North as Luskan. One legend placed them in Thay. But eventually, the difference in their life cycles caught up to the two lovers. The passion which engulfed Valygar's heart while <CHARNAME> and he were walking on the razor's edge subsided and turned into the heartfelt friendship. 
+
+Years past, and Valygar grew tired of the adventurous lifestyle his ever-young lover preferred to all else. He bid a fond farewell to <CHARNAME> and went to live in Umar Hills. There after a time, he married a local farmer's daughter. 
+
+The famous heroine, <CHARNAME> of Candlekeep, was the woman who danced the most at the wedding and drank heartily to the happiness of the newlyweds. With her came an Elven Lord who was her equal in power, glory and years. Not long after that the two Elves left Faerun for the Evermeet. 
+
+Corthala's only son, Valygar's pride and joy, made it his life's goal to right the wrongs done to his father. He would go on to lead the Cowled Wizards, becoming the organization's greatest agent of reform.~
+@40   = ~After the battle against Mellisan <CHARNAME> and Valygar returned to Umar Hills to enjoy a short period of freedom and love. <CHARNAME> became restless after a while and declared that she would like to travel free and relatively unmolested for a change. Valygar gladly agreed, and they set off to explore the Realms. 
+
+In their fourth year together they had a daughter who turned out to blend the virtues of her parents perfectly. Valygar relaxed only when it became obvious that the girl had no interest whatsoever in magic. In fact Goriona fell asleep in seconds when they paid aunt Imoen a visit and she started to talk about her research. 
+
+The family decided it was time to settle down when it became obvious that <CHARNAME> was going to have another child. They returned to Umar Hills where <CHARNAME> gave birth to a second girl. They named her Magdelene to honor the memory of Valygar's mother. 
+
+The couple's love and life was severely tested when Valygar became tormented by old fears when little Magdelene not only turned out to be the spitting image of her grandmother, but to have inherited her love for and affinity to magic. He adored his daughters and <CHARNAME>, but feared for Magdelene and watched her constantly, often staying awake through the nights with worry. 
+
+<CHARNAME> watched the change in her beloved with agony, feeling that there was nothing she could say or do to chase away the shadows. She begged, pleaded, argued, reasoned and finally threatened him to no avail. His only answer was that they had tempted fate when they had another child after Goriona had turned out being 'uncursed'. 
+
+<CHARNAME> summoned all of her strength, clandestinely packed her things and left him without leaving a note or saying another word. 
+
+She returned to Candlekeep and became a famous ranger-protector and a sought tutor to many would-be rangers. When Magdelene turned ten <CHARNAME> asked the monks of Candlekeep to take her under their wing and give her proper education. Magdelene was talented and inspired and became a fine mage; she was ambitious, but never showed a sign of the fatal obsession her father had feared so much. <CHARNAME> was tempted ever so often to search for Valygar, to tell him that all his fears had been unnecessary, but she never brought herself to it. 
+
+Goriona stayed with her mother to become a ranger herself, eventually. At the age of eighteen she decided to look for her father. Two days after her twentieth birthday, she found out that Valygar Corthala had lived in a small cabin halfway between Candlekeep and Beregost. He had never disclosed his location to the family he watched over so carefully and had died some years ago outnumbered in a bandit raid.
+
+Shaken to the core and not thinking about the possible consequences Goriona told her mother about this. <CHARNAME>'s hard-won inner peace was shattered. She knew the cabin. She had tried to meet its owner, but he was always gone whenever she stopped by. Those she asked only shrugged, for no one really knew who the stranger was. The thought that she had not guessed, not felt her lover's presence drove <CHARNAME> back to wandering. She was never seen again.~
+@41   = ~After the battle against Mellisan <CHARNAME> and Valygar returned to Umar Hills to enjoy a short period of freedom and love. <CHARNAME> became restless after a while and declared that she would like to travel free and relatively unmolested for a change. Valygar gladly agreed, and they set off to explore the Realms. 
+
+In their fourth year together they had a daughter who turned out to blend the virtues of her parents perfectly. Valygar relaxed only when it became obvious that the girl had no interest whatsoever in magic. In fact Goriona fell asleep in seconds when they paid aunt Imoen a visit and she started to talk about her research. 
+
+The family decided it was time to settle down when it became obvious that <CHARNAME> was going to have another child. They returned to Umar Hills where <CHARNAME> gave birth to a second girl. They named her Magdelene to honor the memory of Valygar's mother. 
+
+The couple's love and life was severely tested when Valygar became tormented by old fears when little Magdelene not only turned out to be the spitting image of her grandmother, but to have inherited her love for and affinity to magic. He adored his daughters and <CHARNAME>, but feared for Magdelene and watched her constantly, often staying awake through the nights with worry. 
+
+<CHARNAME> watched the change in her beloved with agony, feeling that there was nothing she could say or do to chase away the shadows. She begged, pleaded, argued, reasoned and finally threatened him to no avail. His only answer was that they had tempted fate when they had another child after Goriona had turned out being 'uncursed'. 
+
+<CHARNAME> summoned all of her strength, clandestinely packed her things and left him without leaving a note or saying another word.
+
+<CHARNAME> took Magdelene to Candlekeep, believing the place which had helped her would help Magdelene as well. She turned down several offers to become ranger-protector there as her thoughts still lingered in Umar Hills. She still hoped that some day she would find a way to banish Valygar's demons.
+
+Valygar spent his time sulking and simmering, cursing himself, life and especially <CHARNAME>. Stubborn and convinced he was right, he suppressed his need for her and for his family, until one day he received a short, letter written by his daughters promising they would never take up magic. Valygar's remaining defenses melted instantly and he was on the road only moments later
+
+As it happened, <CHARNAME> had just thrown all her plots aside and decided to travel to Umar Hills. She and Valygar met on the road, halfway between Beregost and Candlekeep. It took only one moment for the two to forgive one another, although they still had a lot of talking to do.
+
+Re-established as loving couple they shared the responsibilities of ranger-protection on the Sword Coast to be near their daughter Magdelene, who chose to study in Candlekeep library.  Magdelene was talented and inspired and became a fine mage; she was ambitious, but never showed a sign of the fatal obsession her father had feared so much.
+
+Eventually Valygar, <CHARNAME> and their daughters packed their belongings to visit the homeland of Magdelene Corthala I. The sisters returned to Amn three years later, but their parents stayed there for the rest of their lives.~
+/*
+@42   = 
+@43   = 
+@44   = 
+@45   = 
+@46   = 
+@47   = 
+@48   = 
+@49   = 
+@50   = 
+*/

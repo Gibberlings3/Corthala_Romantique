@@ -1,0 +1,27 @@
+IF
+    Global("_rc_restcheck","GLOBAL",0)
+    OR(2)
+	Global("H#Resurrected","GLOBAL",0)
+	Global("H#Resurrected","GLOBAL",7)
+    InParty("Valygar")
+    See("Valygar")
+    !StateCheck("Valygar",CD_STATE_NOTVALID)
+    InParty(Myself)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    OR(2)
+	Global("H#ValygarRomanceActive","GLOBAL",1)
+	Global("H#ValygarRomanceActive","GLOBAL",2)
+    OR(2)
+       AreaType(OUTDOOR)
+       AreaType(FOREST)
+    RealGlobalTimerExpired("H#RestBanter","GLOBAL")
+    Global("H#Nalia3","LOCALS",0)
+THEN
+    RESPONSE #100
+       SetGlobal("H#Nalia3","LOCALS",1)
+       SmallWait(1)
+       RealSetGlobalTimer("H#RestBanter","GLOBAL",%ValygarRomanceTimer_long%)
+       StartDialogNoSet("Valygar")
+       SmallWait(1)
+END
+

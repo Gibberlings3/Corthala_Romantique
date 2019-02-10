@@ -1,0 +1,21 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+	CutSceneId("H#LEON")
+	SetGlobal("H#LeoQuest","GLOBAL",21)
+	Face(3)
+	CreateVisualEffectObject("SPDUSTY2","H#LEON")
+	PlaySound("EFF_M29")
+	CreateCreature("H#LEONCS",[200.700],0)
+	Wait(2)
+	MoveViewPoint([200.700],INSTANT)
+	Wait(2)
+	CreateVisualEffectObject("SPGREAXI","DoorSphere")
+	CloseDoor("DoorSphere")
+	Lock("DoorSphere")
+	Wait(2)
+	ActionOverride("H#LEONCS",DestroySelf())
+	EndCutSceneMode()
+	StartDialogueNoSet("Player1")
+END

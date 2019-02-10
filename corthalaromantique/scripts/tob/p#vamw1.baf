@@ -1,0 +1,14 @@
+IF
+  True()
+THEN
+  RESPONSE #100
+    CutSceneId("P#MAGDEL")
+    CreateVisualEffectObject("SPFLESHS",Myself)
+    Wait(1)
+    ActionOverride("P#ANDREA",CreateVisualEffectObject("SPFLESHS",Myself))
+    Wait(1)
+    ActionOverride("P#ANDREA",ChangeAnimation("HGWRA02"))
+    ActionOverride("P#MAGDEL",ChangeAnimation("HGWRA02"))
+    ChangeEnemyAlly("P#MAGDEL",ENEMY)
+    ChangeEnemyAlly("P#ANDREA",ENEMY)
+END

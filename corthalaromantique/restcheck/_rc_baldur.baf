@@ -1,0 +1,117 @@
+//These scripts keep scenes that trigger on rest from triggering on the same rest as dreams in Shadows of Amn. EXTEND_BOTTOM ~baldur.bcs~
+
+//Rest check timer.
+IF
+	Global("_rc_restcheck","GLOBAL",2)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",3)
+	RealSetGlobalTimer("_rc_restchecktimer1","GLOBAL",180)
+END
+
+IF
+	RealGlobalTimerExpired("_rc_restchecktimer1","GLOBAL")
+		Global("_rc_restcheck","GLOBAL",3)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",0)
+END
+
+
+IF //First Imoen Dream
+	GlobalTimerExpired("ImoenDream1","GLOBAL")
+	Global("HadImoenDream1","GLOBAL",0)
+	GlobalLT("Chapter","GLOBAL",4)
+	Global("_rc_restcheck","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",1)
+END
+
+IF
+	Global("HadImoenDream1","GLOBAL",1)
+	Global("_rc_HadImoenDream1","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_HadImoenDream1","GLOBAL",1)	
+	SetGlobal("_rc_restcheck","GLOBAL",2)
+END
+
+
+IF //First Jon Dream
+	GlobalTimerExpired("JonDream1","GLOBAL")
+	Global("HadJonDream1","GLOBAL",0)
+	GlobalLT("Chapter","GLOBAL",4)
+	Global("_rc_restcheck","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",1)
+END
+
+IF
+	Global("HadJonDream1","GLOBAL",1)
+	Global("_rc_HadJonDream1","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_HadJonDream1","GLOBAL",1)
+	SetGlobal("_rc_restcheck","GLOBAL",2)
+END
+
+
+IF //Second Jon Dream
+	GlobalTimerExpired("JonDream2","GLOBAL")
+	Global("HadJonDream2","GLOBAL",0)
+	GlobalLT("Chapter","GLOBAL",4)
+	Global("_rc_restcheck","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",1)
+END
+
+IF
+	Global("HadJonDream2","GLOBAL",1)
+	Global("_rc_HadJonDream2","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_HadJonDream2","GLOBAL",1)
+	SetGlobal("_rc_restcheck","GLOBAL",2)
+END
+
+
+IF //Slayer Dream
+	GlobalGT("DrowTalk","GLOBAL",3)
+	Global("HadSlayerDream","GLOBAL",0)
+	GlobalGT("AsylumPlot","GLOBAL",54)
+	Global("_rc_restcheck","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",1)
+END
+
+IF 
+	Global("HadSlayerDream","GLOBAL",1)
+	Global("_rc_HadSlayerDream","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",2)
+	SetGlobal("_rc_HadSlayerDream","GLOBAL",1)
+END
+
+
+IF //Ellesime Dream
+	GlobalTimerExpired("EllesimeDream1","GLOBAL")
+	Global("HadEllesimeDream1","GLOBAL",0)
+	Global("_rc_restcheck","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",1)
+END 
+
+IF
+	Global("HadEllesimeDream1","GLOBAL",1)
+	Global("_rc_HadEllesimeDream1","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",2)
+	SetGlobal("_rc_HadEllesimeDream1","GLOBAL",1)
+END

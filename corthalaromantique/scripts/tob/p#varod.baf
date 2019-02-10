@@ -1,0 +1,77 @@
+IF
+GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)
+Global("H#ValygarRomanceActive","GLOBAL",2)
+    InParty(Myself)
+    See(Player1)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    CombatCounter(0)
+ReputationGT(Player1,9)
+GlobalGT("P#VaLoveTalk","GLOBAL",2) 
+Global("P#VaLoveTalkRest","GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#VaLoveTalkRest","GLOBAL",1)
+StartDialogueNoSet(Player1)
+END
+
+//Saradush - 2
+
+IF
+GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)
+Global("H#ValygarRomanceActive","GLOBAL",2)
+    InParty(Myself)
+    See(Player1)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    CombatCounter(0)
+RealGlobalTimerExpired("P#VaLoveTalkTime","GLOBAL")
+ReputationGT(Player1,9)
+Global("EnteredArea5203","GLOBAL",1) //after Saradush fall
+Global("P#VaFreeTalk2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#VaFreeTalk2","GLOBAL",2)
+StartDialogueNoSet(Player1)
+END
+
+IF
+GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)
+Global("H#ValygarRomanceActive","GLOBAL",2)
+    InParty(Myself)
+    See(Player1)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    CombatCounter(0)
+ReputationGT(Player1,9)
+GlobalGT("P#VaLoveTalk","GLOBAL",18)
+Global("P#VaLoveTalkRest","GLOBAL",2)
+!AreaType("CITY")
+THEN
+RESPONSE #100
+IncrementGlobal("P#VaLoveTalkRest","GLOBAL",1)
+StartDialogueNoSet(Player1)
+END
+
+
+
+// Valygar Collects Flowers in the morning
+
+IF 
+GlobalGT("Chapter","GLOBAL",%bg2_chapter_7%)
+Global("H#ValygarRomanceActive","GLOBAL",2)
+    InParty(Myself)
+    See(Player1)
+    !StateCheck(Player1,CD_STATE_NOTVALID)
+    !StateCheck(Myself,CD_STATE_NOTVALID)
+    CombatCounter(0)
+ReputationGT(Player1,9)
+OR(2)
+AreaType(FOREST)
+AreaType(OUTDOOR)
+!AreaType(CITY)
+Global("P#VaFreeTalk3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#VaFreeTalk3","GLOBAL",1)
+END

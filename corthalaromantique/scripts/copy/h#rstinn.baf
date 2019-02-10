@@ -1,0 +1,34 @@
+// b!rest1.baf - INN - cutscene "rest" that runs after a night talk, preventing dreams or other rest banters from kicking in when the usual RestParty() events aren't wanted
+
+/* Use this one in combination with AreaType(CITY) if the party is staying at an inn. 
+
+IF ~~ THEN DO ~ClearAllActions()
+               StartCutSceneMode()
+               StartCutScene("H#RSTCMP")~ EXIT //just in case the area is tagged wrongly
+IF ~AreaCheck("AR4500")~ THEN DO ~ClearAllActions()
+               StartCutSceneMode()
+               StartCutScene("H#RSTPPG")~ EXIT
+IF ~AreaType(DUNGEON) !AreaCheck("AR4500")~ THEN DO ~ClearAllActions()
+               StartCutSceneMode()
+               StartCutScene("H#RSTDNG")~ EXIT
+IF ~AreaType(CITY)~ THEN DO ~ClearAllActions()
+               StartCutSceneMode()
+               StartCutScene("H#RSTINN")~ EXIT
+ */
+
+IF 
+	True() 
+THEN 
+	RESPONSE #100 
+		CutSceneId(Player1) 
+		Rest() 
+		ActionOverride(Player2,Rest()) 
+		ActionOverride(Player3,Rest()) 
+		ActionOverride(Player4,Rest()) 
+		ActionOverride(Player5,Rest()) 
+		ActionOverride(Player6,Rest()) 
+		StartMovie("RESTINN") 
+		MoveViewObject(Player1,INSTANT)
+		Wait(1) 
+		EndCutSceneMode() 
+END

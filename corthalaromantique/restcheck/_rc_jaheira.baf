@@ -1,0 +1,50 @@
+	
+IF //1st Jaheira Romance Rest. EXTEND_BOTTOM ~jaheira.bcs~
+	!Global("JaheiraRomanceActive","GLOBAL",0)
+	!Global("JaheiraRomanceActive","GLOBAL",3)
+	OR(2)
+		Global("JaheiraMatch","GLOBAL",1)
+		Global("JaheiraMatch","GLOBAL",2)
+	See(Player1)
+	CombatCounter(0)
+	Global("LoveTalk","LOCALS",57)
+	Global("_rc_restcheck","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",1)
+END
+
+IF
+	Global("LoveTalk","LOCALS",58)
+	Global("_rc_LoveTalk58","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",2)
+	SetGlobal("_rc_LoveTalk58","LOCALS",1)
+END
+
+
+IF  //2nd Jaheira Romance Rest. EXTEND_BOTTOM ~jaheira.bcs~
+	!Global("JaheiraRomanceActive","GLOBAL",0)
+	!Global("JaheiraRomanceActive","GLOBAL",3)
+	OR(2)
+		Global("JaheiraMatch","GLOBAL",1)
+		Global("JaheiraMatch","GLOBAL",2)
+	See(Player1)
+	CombatCounter(0)
+	Global("LoveTalk","LOCALS",67)
+	Global("_rc_restcheck","GLOBAL",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",1)
+END
+
+IF
+	Global("LoveTalk","LOCALS",68)
+	Global("_rc_LoveTalk68","LOCALS",0)
+THEN
+	RESPONSE #100
+	SetGlobal("_rc_restcheck","GLOBAL",2)
+	SetGlobal("_rc_LoveTalk68","LOCALS",1)
+END
+

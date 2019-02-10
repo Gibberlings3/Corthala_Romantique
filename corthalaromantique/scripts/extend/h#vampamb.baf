@@ -1,0 +1,34 @@
+
+IF
+  Global("CleanseVampire","AR1401",2)
+  Global("H#ValygarVampire","GLOBAL",3)
+  Name("Valygar",Myself)
+  AreaCheck("AR1401")
+THEN
+  RESPONSE #100
+    SetGlobal("H#ValygarVampire","GLOBAL",4)
+    DialogueInterrupt(TRUE)
+    ChangeAIScript("Valygar",OVERRIDE)
+END
+
+IF
+  Global("H#ValygarVampire","GLOBAL",1)
+  Global("RomanceVampire","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("RomanceVampire","GLOBAL",1)
+    Continue()
+END
+
+IF
+  Global("H#ValygarVampire","GLOBAL",1)
+  Global("RomanceVampire","GLOBAL",1)
+  Global("RomanceVampireTeleport","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("RomanceVampireTeleport","GLOBAL",1)
+    CreateVisualEffectObject("SPDIMNDR",Myself)
+    Wait(2)
+    DestroySelf()
+END
+
