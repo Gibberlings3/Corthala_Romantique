@@ -223,7 +223,6 @@ IF
     !AreaType(DUNGEON)
     Dead("UHRANG01")
     !See("UHRANG01")
-    GlobalGT("H#LoveTalk","LOCALS",2) //only after first dialogue!
     Global("H#MerellaDead","GLOBAL",0)
     OR(3)
 	!%CR_FRIENDSHIP_DISABLED% //Friendship dialogues will not start if IEP Valygar Friendship mod is installed

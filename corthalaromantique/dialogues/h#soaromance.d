@@ -153,9 +153,9 @@ SAY @37
 + ~Global("H#MerellaDead","GLOBAL",1)~ + @40 + H#MerDead_04
 
 /* PC and Valygar didn't talk about it - latestart */
-+ ~Global("H#MerellaDead","GLOBAL",0)~ + @38 GOTO H#MerIsDead3 
-+ ~Global("H#MerellaDead","GLOBAL",0)~ + @41 + H#MerIsDead1
-+ ~Global("H#MerellaDead","GLOBAL",0)~ + @40 + H#MerIsDead2
++ ~!Global("H#MerellaDead","GLOBAL",1)~ + @38 GOTO H#MerIsDead3 
++ ~!Global("H#MerellaDead","GLOBAL",1)~ + @41 + H#MerIsDead1
++ ~!Global("H#MerellaDead","GLOBAL",1)~ + @40 + H#MerIsDead2
 END
 
 IF ~~ THEN H#MerDead_01
