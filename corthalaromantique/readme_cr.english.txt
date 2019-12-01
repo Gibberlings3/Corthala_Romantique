@@ -6,7 +6,7 @@ For Baldur's Gate II -- SoA and ToB (BGII, BGT, BGII:EE, EET)
 
 by Domi, Beyshaliban, Caetlyn, Meira, jastey
 
-Version 2
+Version 3
 
 
 1.  About
@@ -164,6 +164,9 @@ A special thank you goes to
 
 
 8. Version History
+
+Version 3 (1st of December 2019):
+-prevented the "Merella is dead" dialogue to fire sooner than first LT (no NVLOR in first LT if Merella was already dead upon joining)
 
 Version 2 (10th of February 2019):
 -compatibility with IEP Valygar Friendship if both mods are installed: CR Romance kills IEP Friendship, but IEP Friendship kills CR friendship talks in case of no romance.
