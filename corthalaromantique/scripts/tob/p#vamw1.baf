@@ -11,5 +11,5 @@ THEN
     ChangeEnemyAlly("P#ANDREA",ENEMY)
     Wait(1)
     ActionOverride("P#ANDREA",ChangeAnimation("HGWRA02"))
-    ActionOverride("P#MAGDEL",ChangeAnimation("HGWRA02"))
+    ChangeAnimation("HGWRA02")
 END
