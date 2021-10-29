@@ -2,7 +2,7 @@ BACKUP ~CorthalaRomantique\Backup~
 
 //AUTHOR ~~
 SUPPORT ~http://gibberlings3.net/corthala/~
-VERSION ~v3~ //191201
+VERSION ~v4~ //211029
 
 AUTO_TRA ~CorthalaRomantique/%s~
 
@@ -109,35 +109,13 @@ ALWAYS
 END //ALWAYS
 
 
-
-
-
-
 LANGUAGE ~English~
          ~English~
          ~CorthalaRomantique/english/CRSetup.tra~
          ~CorthalaRomantique/english/CRGame.tra~
 
 BEGIN @10000 DESIGNATED 0
-
-/* RestCheck by BCeasar. Prevents triggering of Valygar's nighttalks directly after one of the original game's */
-
-EXTEND_BOTTOM ~baldur.bcs~ ~CorthalaRomantique/restcheck/_rc_baldur.baf~
-EXTEND_BOTTOM ~baldur25.bcs~ ~CorthalaRomantique/restcheck/_rc_baldur25.baf~
-EXTEND_BOTTOM ~aerie.bcs~ ~CorthalaRomantique/restcheck/_rc_aerie.baf~
-EXTEND_BOTTOM ~aeri25.bcs~ ~CorthalaRomantique/restcheck/_rc_aeri25.baf~
-EXTEND_BOTTOM ~anomen.bcs~ ~CorthalaRomantique/restcheck/_rc_anomen.baf~
-EXTEND_BOTTOM ~jaheira.bcs~ ~CorthalaRomantique/restcheck/_rc_jaheira.baf~
-EXTEND_BOTTOM ~viconia.bcs~ ~CorthalaRomantique/restcheck/_rc_viconia.baf~
-EXTEND_BOTTOM ~vico25.bcs~ ~CorthalaRomantique/restcheck/_rc_vico25.baf~
-
-ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
-  EXTEND_BOTTOM ~dorn.bcs~ ~CorthalaRomantique/restcheck/_rc_dorn.baf~
-  EXTEND_BOTTOM ~hexxat.bcs~ ~CorthalaRomantique/restcheck/_rc_hexxat.baf~
-  EXTEND_BOTTOM ~hexxa25.bcs~ ~CorthalaRomantique/restcheck/_rc_hexxa25.baf~
-  EXTEND_BOTTOM ~neera25.bcs~ ~CorthalaRomantique/restcheck/_rc_neera25.baf~
-  EXTEND_BOTTOM ~rasaad.bcs~ ~CorthalaRomantique/restcheck/_rc_rasaad.baf~
-END
+LABEL ~CorthalaRomantique-main~
 
 /* ADD_JOURNAL */
 /* The Final Battle with Bodhi. */
@@ -495,11 +473,11 @@ END
 ACTION_IF FILE_EXISTS_IN_GAME ~u!cut41g.bcs~ THEN BEGIN
   PRINT @10006 /* ~UB's Suna Seni component detected... installing crossmod.~ */
 
-  OUTER_SET valygar_state_1 = STATE_WHICH_SAYS 170 IN ~ub/tra/%s/ubdialog.tra~ FROM ~VALYGARJ.dlg~
+  OUTER_SET valygar_state_1 = STATE_WHICH_SAYS 170 IN ~ub/lang/%s/ubdialog.tra~ FROM ~VALYGARJ.dlg~
 
-  OUTER_SET valygar_state_2 = STATE_WHICH_SAYS 172 IN ~ub/tra/%s/ubdialog.tra~ FROM ~VALYGARJ.dlg~
+  OUTER_SET valygar_state_2 = STATE_WHICH_SAYS 172 IN ~ub/lang/%s/ubdialog.tra~ FROM ~VALYGARJ.dlg~
 
-  OUTER_SET valygar_state_3 = STATE_WHICH_SAYS 188 IN ~ub/tra/%s/ubdialog.tra~ FROM ~VALYGARJ.dlg~
+  OUTER_SET valygar_state_3 = STATE_WHICH_SAYS 188 IN ~ub/lang/%s/ubdialog.tra~ FROM ~VALYGARJ.dlg~
   COMPILE EVALUATE_BUFFER ~CorthalaRomantique/crossmod/ub_SunaSeni_followup.d~ 
   EXTEND_BOTTOM ~valygar.bcs~ ~CorthalaRomantique/crossmod/ub_SunaSeni_followup.baf~ EVALUATE_BUFFER
 
@@ -521,6 +499,7 @@ END
 
 //BEGIN ~Bathing scene~
 BEGIN @10001 DESIGNATED 1
+LABEL ~CorthalaRomantique-BathingScene~
 REQUIRE_COMPONENT ~Setup-CorthalaRomantique.tp2~ ~0~ @10007
 
 COMPILE  ~CorthalaRomantique/bathingflirt/bathing_restflirt.d~
@@ -538,6 +517,7 @@ EXTEND_TOP ~valygard.bcs~ ~CorthalaRomantique/bathingflirt/bathing_restflirt.baf
 
 //BEGIN ~Install Leonora Content: A Guard for the Sphere~
 BEGIN @10002 DESIGNATED 2
+LABEL ~CorthalaRomantique-SphereGuard~
 
 COPY ~CorthalaRomantique/quest/H#TOLGER.cre~ ~override\H#TOLGER.cre~
   SAY NAME1 @15

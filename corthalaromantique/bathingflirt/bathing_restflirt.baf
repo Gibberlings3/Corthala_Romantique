@@ -1,6 +1,5 @@
 //Swimming Flirt
 IF
-    Global("_rc_restcheck","GLOBAL",0)
     OR(2)
         Global("H#ValygarRomanceActive","GLOBAL",1)
         Global("H#ValygarRomanceActive","GLOBAL",2)

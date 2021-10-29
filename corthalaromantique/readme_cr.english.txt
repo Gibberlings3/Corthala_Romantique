@@ -6,7 +6,7 @@ For Baldur's Gate II -- SoA and ToB (BGII, BGT, BGII:EE, EET)
 
 by Domi, Beyshaliban, Caetlyn, Meira, jastey
 
-Version 3
+Version 4
 
 
 1.  About
@@ -106,8 +106,6 @@ Note: For all who remember the beta versions, there are changes in the romance. 
 
 Compatibility: Corthala Romantique is coded using WeiDU and should be techincally compatible with most other WeiDU mods. 
 
-The mod uses BCaesar's RestCheck to ensure rest dialogues do not fire at the same rest as BioWare ones.
-
 Content-wise:
 
 IEP Valygar Friendship mod: The mods were made compatible in the following way: If both mods are installed, the CR romance will kill the IEP Friendship talks, but the IEP talks will kill the CR Friendship talks (in case of no romance). Note: some NPC banter and interjections of the CR mod will still play even if the CR friendship talks are disabled.
@@ -164,6 +162,12 @@ A special thank you goes to
 
 
 8. Version History
+
+Version 4
+-adapted crossmod to changed folder structure of UB.
+-ToB Wraith encounter should play until the end.
+-added globally unique LABELs and instal order syntax to support Project Infinity.
+-added libiconv-1.9.2-1-src.7z for licenxe info.
 
 Version 3 (1st of December 2019):
 -prevented the "Merella is dead" dialogue to fire sooner than first LT (no NVLOR in first LT if Merella was already dead upon joining)

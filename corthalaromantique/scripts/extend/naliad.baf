@@ -1,5 +1,4 @@
 IF
-    Global("_rc_restcheck","GLOBAL",0)
     OR(2)
 	Global("H#Resurrected","GLOBAL",0)
 	Global("H#Resurrected","GLOBAL",7)

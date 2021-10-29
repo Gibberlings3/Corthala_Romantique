@@ -2,7 +2,6 @@
 
 //Resurrection
 IF
-    Global("_rc_restcheck","GLOBAL",0)
     GlobalGT("H#ValygarVampire","GLOBAL",4)
     Global("H#Resurrected","GLOBAL",1)
     InParty(Myself)
@@ -25,7 +24,6 @@ END
 //LoveTalks at Rest
 /* Valygar's book, GlobalGT("H#LoveTalk","LOCALS",4) */
 IF
-    Global("_rc_restcheck","GLOBAL",0)
     InParty(Myself)
     See(Player1)
     RealGlobalTimerExpired("H#RestBanter","GLOBAL")
@@ -51,7 +49,6 @@ END
 
 /* My fearless leader, GlobalGT("H#LoveTalk","LOCALS",14) */
 IF
-    Global("_rc_restcheck","GLOBAL",0)
     InParty(Myself)
     See(Player1)
     RealGlobalTimerExpired("H#RestBanter","GLOBAL")
@@ -75,7 +72,6 @@ END
 
 //It's freezing
 IF
-    Global("_rc_restcheck","GLOBAL",0)
     InParty(Myself)
     See(Player1)
     RealGlobalTimerExpired("H#RestBanter","GLOBAL")
@@ -99,7 +95,6 @@ END
 
 //Star gazing
 IF
-    Global("_rc_restcheck","GLOBAL",0)
     InParty(Myself)
     See(Player1)
     RealGlobalTimerExpired("H#RestBanter","GLOBAL")
@@ -124,7 +119,6 @@ END
 
 //Banters at Rest
 IF
-    Global("_rc_restcheck","GLOBAL",0)
     InParty(Myself)
     InParty("Mazzy")
     See("Mazzy")
