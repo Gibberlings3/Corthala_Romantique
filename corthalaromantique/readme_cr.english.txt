@@ -166,6 +166,7 @@ A special thank you goes to
 Version 4
 -adapted crossmod to changed folder structure of UB.
 -ToB Wraith encounter should play until the end.
+-Removed Restcheck syntax as it was outdated.
 -added globally unique LABELs and instal order syntax to support Project Infinity.
 -added libiconv-1.9.2-1-src.7z for licenxe info.
 
