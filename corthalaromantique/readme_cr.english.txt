@@ -163,6 +163,9 @@ A special thank you goes to
 
 8. Version History
 
+Version 4.1
+-English version proofread by RavenBlack.
+
 Version 4
 -adapted crossmod to changed folder structure of UB.
 -ToB Wraith encounter should play until the end.
