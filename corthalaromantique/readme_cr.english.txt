@@ -6,7 +6,7 @@ For Baldur's Gate II -- SoA and ToB (BGII, BGT, BGII:EE, EET)
 
 by Domi, Beyshaliban, Caetlyn, Meira, jastey
 
-Version 4
+Version 5
 
 
 1.  About
@@ -162,6 +162,9 @@ A special thank you goes to
 
 
 8. Version History
+
+Version 5
+-English version proofread by RavenBlack.
 
 Version 4
 -adapted crossmod to changed folder structure of UB.
